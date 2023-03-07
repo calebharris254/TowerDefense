@@ -14,6 +14,7 @@
 
 
 //setup 
+//Map = new Map();
 void setup()
 {
   fullScreen();

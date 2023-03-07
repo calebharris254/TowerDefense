@@ -35,7 +35,7 @@ class Map
      {2,2,2,2,2,2,2,2,2,2,3,2},
    
    };
-   return levelOne;
+   return returnedLevel;
    }
    else if(level == 2)
    {
