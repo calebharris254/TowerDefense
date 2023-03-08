@@ -14,12 +14,12 @@
 
 
 //setup 
-//Map = new Map();
+
+Map level = new Map();
 Hud h = new Hud();
 void setup()
 {
   fullScreen();
- 
 }
 
 void draw()

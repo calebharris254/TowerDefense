@@ -11,16 +11,16 @@ By Caleb
 //4 = enemy spawn
 //12x12 board
 //Variables 
-int level = 1;
+
 class Map
 {
-  int map [][];
+ // int [][]level = returnedLevel[12][12];
  
  public int[][] loadLevel(int level)
  {
    if(level == 1)
    {
-   int returnedLevel[][] = {
+     int [][]returnedLevel = {
      {2,4,2,2,2,2,2,2,2,2,2,2},
      {2,1,2,2,2,2,2,2,2,2,2,2},
      {2,1,2,2,2,2,2,2,2,2,2,2},
@@ -37,9 +37,9 @@ class Map
    };
    return returnedLevel;
    }
-   else if(level == 2)
+    else if(level == 2)
    {
-     int returnedLevel[][] = {
+     int [][]returnedLevel = {
      {2,4,2,2,2,2,2,2,2,2,2,2},
      {2,1,2,2,2,2,2,2,2,2,2,2},
      {2,1,2,2,2,2,2,2,2,2,2,2},
@@ -59,5 +59,6 @@ class Map
   
   
   
-  
+  return new int[0][0];
+  }
 }
