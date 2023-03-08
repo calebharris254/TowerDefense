@@ -14,7 +14,8 @@
 
 
 //setup 
-//Map = new Map();
+Map level = new Map();
+
 void setup()
 {
   fullScreen();
