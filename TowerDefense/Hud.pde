@@ -14,7 +14,7 @@ class Hud
   {
     hudSizeX = width/4;
     fill(242,190,56);
-    rect((width-hudSizeX)-1,0,hudSizeX,height-1);
+    rect((width-hudSizeX)-1,0,hudSizeX,height-1); // main hud
     return;
   }
 }
