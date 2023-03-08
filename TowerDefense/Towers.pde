@@ -12,3 +12,13 @@ class rifleTower
 {
 //Will have medium range and medium damage, with medium speed.
 }
+
+class smgTower
+{
+//Will have short range and low damage, with high speed.
+}
+
+class iceTower
+{
+//Will shoot frost that slows down the enemy, while dealing damage  
+}
