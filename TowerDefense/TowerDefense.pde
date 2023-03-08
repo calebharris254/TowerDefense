@@ -19,6 +19,7 @@ Map level = new Map();
 void setup()
 {
   fullScreen();
+  
 }
 
 void draw()
