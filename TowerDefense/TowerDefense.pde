@@ -15,12 +15,14 @@
 
 //setup 
 //Map = new Map();
+Hud h = new Hud();
 void setup()
 {
   fullScreen();
+ 
 }
 
 void draw()
 {
-  
+   h.drawHud();
 }
