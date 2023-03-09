@@ -7,7 +7,7 @@
 ///////////////////////////////////////////////////////////
 */
 //Variables area
-
+int mapX, mapY;
 
 
 
@@ -24,5 +24,9 @@ void setup()
 
 void draw()
 {
+  //draws level
+  level.drawLevel();
+  //draws hud
    h.drawHud();
+  
 }
