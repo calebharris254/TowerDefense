@@ -1,24 +1,62 @@
+
+
 class sniperTower
 {
-//Will have far range and high damage, but shoots slower.
+  PImage redBall;
+  int towerX;
+  int towerY;
+  
+  public sniperTower(int towerX, int towerY)
+  {
+   
+  }
 }
+
 
 class bazookaTower
 {
-//Will shoot rocket that covers more area and high damage, but shoots much slower
+  PImage orangeBall;
+  int towerX;
+  int towerY;
+  
+  public bazookaTower(int towerX, int towerY)
+  {
+  
+  }
 }
 
 class rifleTower
 {
-//Will have medium range and medium damage, with medium speed.
+  PImage yellowBall;
+  int towerX;
+  int towerY;
+  
+  public rifleTower(int towerX, int towerY)
+  {
+    
+  }
 }
 
 class smgTower
 {
-//Will have short range and low damage, with high speed.
+  PImage greenBall;
+  int towerX;
+  int towerY;
+
+  public smgTower(int towerX, int towerY)
+  {
+  
+  }
 }
 
 class iceTower
 {
-//Will shoot frost that slows down the enemy, while dealing damage  
+  PImage blueBall;
+  int towerX;
+  int towerY;
+
+  public iceTower(int towerX, int towerY)
+  {
+  
+  }
 }
