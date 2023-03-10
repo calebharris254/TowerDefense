@@ -21,7 +21,11 @@ Hud h = new Hud();
 void setup()
 {
   fullScreen();
+<<<<<<< Updated upstream
   textSize(100);
+=======
+  
+>>>>>>> Stashed changes
 }
 
 void draw()

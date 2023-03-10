@@ -10,15 +10,15 @@
 //3 = base where the enemies path to and kill
 //4 = enemy spawn
 //12x12 board
-//Variables
 
 class Map
 {
-  // int [][]level = returnedLevel[12][12];
+   int levelPlaying = 1;
+   int [][]currentLevel;// = returnedLevel[12][12];
 
-  public int[][] loadLevel(int level)
+  public int[][] loadLevel(int levelType)
   {
-    if (level == 1)
+    if (levelType == 1)
     {
       int [][]returnedLevel = {
         {2, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -36,15 +36,15 @@ class Map
 
       };
       return returnedLevel;
-    } else if (level == 2)
+    } else if (levelType == 2)
     {
       int [][]returnedLevel = {
-        {2, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-        {2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-        {2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-        {2, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2},
-        {2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2},
-        {2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 2},
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2},
+        {2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2},
+        {2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2},
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2},
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2},
         {2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2},
         {2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -53,6 +53,7 @@ class Map
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 2},
 
       };
+      return returnedLevel;
     }
 
 
@@ -69,27 +70,37 @@ class Map
       for(int j = 0 ; j < 12; j++)
       {
         stroke(12);
-        if(level.loadLevel(1)[j+mapY][i+mapX] == 1)
+        if(level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 1)
         {
           fill(255,255,0);
-          rect(i*(((height+width)/2)/16), j*(((height+width)/2)/16), (width/17), (((height+width)/2)/16));
+          rect(i*(((height+width)/2)/17), j*(((height+width)/2)/17), (width/17), (((height+width)/2)/17));
         }
-        else if(level.loadLevel(1)[j+mapY][i+mapX] == 2)
-        {
-          fill(0,255,0);
-          rect(i*(((height+width)/2)/16), j*(((height+width)/2)/16), (width/17), (((height+width)/2)/16));
-        }
-        else if(level.loadLevel(1)[j+mapY][i+mapX] == 3)
-        {
-          fill(0,255,255);
-          rect(i*(((height+width)/2)/16), j*(((height+width)/2)/16), (width/17), (((height+width)/2)/16));
-        }
-        else if(level.loadLevel(1)[j+mapY][i+mapX] == 4)
+        else if(level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 4)
         {
           fill(0,0,255);
           rect(i*(((height+width)/2)/17), j*(((height+width)/2)/17), (width/17), (((height+width)/2)/17));
         }
+        else if(level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 2)
+        {
+          fill(0,255,0);
+          rect(i*(((height+width)/2)/17), j*(((height+width)/2)/17), (width/17), (((height+width)/2)/17));
+        }
+        else if(level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 3)
+        {
+          fill(255,0,0);
+          rect(i*(((height+width)/2)/17), j*(((height+width)/2)/17), (width/17), (((height+width)/2)/17));
+        }
+        
       }
     }
   }
+  public int changeLevel()
+  {
+    if(levelPlaying == 0)
+    {
+      System.out.println("Error: No level");
+    }
+    return 0; 
+  }
+  
 }
