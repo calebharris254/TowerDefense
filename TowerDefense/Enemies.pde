@@ -1,34 +1,116 @@
 class redEnemy
 {
-//base speed and health. 1 speed 1 health
+  int health;
+  float speed;
+  int size;
+  int enemyX;
+  int enemyY;
+  
+  public redEnemy(int enemyX, int enemyY)
+  {
+    health = 10;
+    speed = 10;
+    size = 10; 
+    this.enemyX = enemyX;
+    this.enemyY = enemyY;
+  }
 }
 
 class blueEnemy
 {
-// 1.4 speed 2 health
+  int health;
+  float speed;
+  int size;
+  int enemyX;
+  int enemyY;
 }
 
 class greenEnemy
 {
-// 1.8 speed 3 health  
+  int health;
+  float speed;
+  int size;
+  int enemyX;
+  int enemyY;
+  
+  public greenEnemy(int enemyX, int enemyY)
+  {
+    health = 10;
+    speed = 10;
+    size = 10;
+    this.enemyX = enemyX;
+    this.enemyY = enemyY;
+  }
 }
 
 class yellowEnemy
 {
-// 3.2 speed 4 health  
+  int health;
+  float speed;
+  int size;
+  int enemyX;
+  int enemyY;  
+  
+  public yellowEnemy(int enemyX, int enemyY)
+  {
+    health = 10;
+    speed = 10;
+    size = 10;
+    this.enemyX = enemyX;
+    this.enemyY = enemyY;
+  }
 }
 
 class pinkEnemy
 {
-// 3.5 speed 5 health  
+  int health;
+  float speed;
+  int size;
+  int enemyX;
+  int enemyY; 
+  
+  public pinkEnemy(int enemyX, int enemyY)
+  {
+    health = 10;
+    speed = 10;
+    size = 10;
+    this.enemyX = enemyX;
+    this.enemyY = enemyY;
+  }
 }
 
 class blackEnemy
 {
-// 1.8 speed 11 health. Immune to explosions  
+  int health;
+  float speed;
+  int size;
+  int enemyX;
+  int enemyY;
+  
+  public blackEnemy(int enemyX, int enemyY)
+  {
+    health = 10;
+    speed = 10;
+    size = 10;
+    this.enemyX = enemyX;
+    this.enemyY = enemyY;
+  }
 }
 
 class whiteEnemy
 {
-// 2 speed 11 health. Immune to freezing  
+  int health;
+  float speed;
+  int size;
+  int enemyX;
+  int enemyY;
+  
+  public whiteEnemy(int enemyX, int enemyY)
+  {
+    health = 10;
+    speed = 10;
+    size = 10;
+    this.enemyX = enemyX;
+    this.enemyY = enemyY;
+  }
 }

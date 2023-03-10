@@ -2,61 +2,107 @@
 
 class sniperTower
 {
-  PImage redBall;
+  
   int towerX;
   int towerY;
+  int size;
+  float fireRate;
+  float range;
+  int damage;
   
   public sniperTower(int towerX, int towerY)
   {
-   
+    //damage, size, fireRate, and range are all going to change 
+    damage = 4;
+     size = 10; 
+     fireRate = 5.0;
+     range = 10.0;
+     this.towerX = towerX;
+     this.towerY = towerY;
   }
 }
 
 
 class bazookaTower
 {
-  PImage orangeBall;
   int towerX;
   int towerY;
+  int size;
+  float fireRate;
+  float range;
+  int damage;
   
   public bazookaTower(int towerX, int towerY)
   {
-  
+    //damage, size, fireRate, and range are all going to change 
+    damage = 10;
+    size = 10;
+    fireRate = 5.0;
+    range = 10.0;
+    this.towerX = towerX;
+    this.towerY = towerY;
   }
 }
 
 class rifleTower
 {
-  PImage yellowBall;
   int towerX;
   int towerY;
+  int size;
+  float fireRate;
+  float range;
+  int damage;
   
   public rifleTower(int towerX, int towerY)
   {
-    
+    //damage, size, fireRate, and range are all going to change 
+    damage = 5;
+    size = 10;
+    fireRate = 5.0;
+    range = 10.0;
+    this.towerX = towerX;
+    this.towerY = towerY;
   }
 }
 
 class smgTower
 {
-  PImage greenBall;
   int towerX;
   int towerY;
+  int size;
+  float fireRate;
+  float range;
+  int damage;
 
   public smgTower(int towerX, int towerY)
   {
-  
+    //damage, size, fireRate, and range are all going to change 
+    damage = 2;
+    size = 10;
+    fireRate = 5.0;
+    range = 10.0;
+    this.towerX = towerX;
+    this.towerY = towerY;
   }
 }
 
 class iceTower
 {
-  PImage blueBall;
   int towerX;
   int towerY;
+  int size;
+  float fireRate;
+  float range;
+  int damage;
 
   public iceTower(int towerX, int towerY)
   {
-  
+    //damage, size, fireRate, and range are all going to change 
+    damage = 2;
+    size = 10;
+    fireRate = 5.0;
+    range = 10.0;
+    this.towerX = towerX;
+    this.towerY = towerY;
   }
 }
