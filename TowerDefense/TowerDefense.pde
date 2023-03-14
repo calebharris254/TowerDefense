@@ -10,7 +10,8 @@
 int mapX, mapY;
 int health = 100;
 int money = 500;
-
+//level about to be loaded can be changed if .changeLevel is used 
+int levelPlaying = 1;
 
 
 
@@ -22,6 +23,7 @@ void setup()
 {
   fullScreen();
   textSize(100);
+  //level.changeLevel(levelPlaying);
 }
 
 void draw()

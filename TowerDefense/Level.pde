@@ -13,7 +13,7 @@
 
 class Map
 {
-   int levelPlaying = 1;
+   //int levelPlaying = 1;
    int [][]currentLevel;// = returnedLevel[12][12];
 
   public int[][] loadLevel(int levelType)
@@ -94,11 +94,23 @@ class Map
       }
     }
   }
-  public int changeLevel()
+  public int changeLevel(int levelChange)
   {
-    if(levelPlaying == 0)
+    levelPlaying = levelChange;
+    //replace with try catch
+    if(levelChange == 0)
     {
       System.out.println("Error: No level");
+    }
+    if(levelChange == 1)
+    {
+      System.out.println("Loading level 1");
+      return 1;
+    }
+    if(levelChange == 2)
+    {
+      System.out.println("Loading level 2");
+      return 2; 
     }
     return 0; 
   }
