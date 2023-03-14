@@ -23,6 +23,15 @@ class blueEnemy
   int size;
   int enemyX;
   int enemyY;
+  
+  public blueEnemy(int enemyX, int enemyY)
+  {
+    health = 10;
+    speed = 10;
+    size = 10;
+    this.enemyX = enemyX;
+    this.enemyY = enemyY;
+  }
 }
 
 class greenEnemy
