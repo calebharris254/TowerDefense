@@ -35,3 +35,11 @@ void draw()
   text(health,width / 1.175, 120 );// displays health
   text(money,width / 1.175, 225 );// displays money
 }
+void mouseDragged()
+{
+  if(mouseX >= width - (width / 4) + 40 && mouseX <= width - (width / 4) + 200  && mouseY >= height/4 && mouseY <= (height/4)+150)
+  {
+    fill(0,0,0,100);
+    ellipse(mouseX,mouseY,150,150);
+  }
+}
