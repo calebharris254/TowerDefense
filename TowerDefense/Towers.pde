@@ -1,5 +1,4 @@
 
-
 class sniperTower
 {
   
@@ -13,10 +12,10 @@ class sniperTower
   public sniperTower(int towerX, int towerY)
   {
     //damage, size, fireRate, and range are all going to change 
-    damage = 4;
+    damage = 5;
      size = 10; 
-     fireRate = 5.0;
-     range = 10.0;
+     fireRate = 4.0;
+     range = 9.0;
      this.towerX = towerX;
      this.towerY = towerY;
   }
@@ -35,10 +34,10 @@ class bazookaTower
   public bazookaTower(int towerX, int towerY)
   {
     //damage, size, fireRate, and range are all going to change 
-    damage = 10;
+    damage = 5;
     size = 10;
-    fireRate = 5.0;
-    range = 10.0;
+    fireRate = 3.0;
+    range = 3.0;
     this.towerX = towerX;
     this.towerY = towerY;
   }

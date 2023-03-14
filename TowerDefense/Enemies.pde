@@ -8,8 +8,8 @@ class redEnemy
   
   public redEnemy(int enemyX, int enemyY)
   {
-    health = 10;
-    speed = 10;
+    health = 1;
+    speed = 1.25;
     size = 10; 
     this.enemyX = enemyX;
     this.enemyY = enemyY;
@@ -26,8 +26,8 @@ class blueEnemy
   
   public blueEnemy(int enemyX, int enemyY)
   {
-    health = 10;
-    speed = 10;
+    health = 1;
+    speed = 1.50;
     size = 10;
     this.enemyX = enemyX;
     this.enemyY = enemyY;
@@ -44,8 +44,8 @@ class greenEnemy
   
   public greenEnemy(int enemyX, int enemyY)
   {
-    health = 10;
-    speed = 10;
+    health = 2;
+    speed = 1.75;
     size = 10;
     this.enemyX = enemyX;
     this.enemyY = enemyY;
@@ -62,8 +62,8 @@ class yellowEnemy
   
   public yellowEnemy(int enemyX, int enemyY)
   {
-    health = 10;
-    speed = 10;
+    health = 5;
+    speed = 2;
     size = 10;
     this.enemyX = enemyX;
     this.enemyY = enemyY;
@@ -81,7 +81,7 @@ class pinkEnemy
   public pinkEnemy(int enemyX, int enemyY)
   {
     health = 10;
-    speed = 10;
+    speed = 2.25;
     size = 10;
     this.enemyX = enemyX;
     this.enemyY = enemyY;
@@ -98,8 +98,8 @@ class blackEnemy
   
   public blackEnemy(int enemyX, int enemyY)
   {
-    health = 10;
-    speed = 10;
+    health = 20;
+    speed = 1.5;
     size = 10;
     this.enemyX = enemyX;
     this.enemyY = enemyY;
@@ -116,8 +116,8 @@ class whiteEnemy
   
   public whiteEnemy(int enemyX, int enemyY)
   {
-    health = 10;
-    speed = 10;
+    health = 40;
+    speed = 0.75;
     size = 10;
     this.enemyX = enemyX;
     this.enemyY = enemyY;
