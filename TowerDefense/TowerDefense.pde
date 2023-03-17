@@ -20,7 +20,8 @@ int levelPlaying = 1;
 Map level = new Map();
 Hud h = new Hud();
 Sprite ball = new Sprite();
-class Sprite {
+class Sprite 
+{
   float x;
   float y;
   float dx;
@@ -46,23 +47,34 @@ void draw()
   text(money,width / 1.175, 225 );// displays money
   fill(255, 0, 0);
   ellipse(ball.x, ball.y, diam, diam);
+  if(health == 0)
+  {
+  text("GAME OVER",width/2.5,height/2);
+  noLoop();
+  }
+}
+void keyPressed()
+{
+  if(key == 'k')
+  {
+   health=0;
+  }
 }
 void mouseDragged()
 {
-  /*if(mouseX >= width - (width / 4) + 40 && mouseX <= width - (width / 4) + 200  && mouseY >= height/4 && mouseY <= (height/4)+150)
+  if (pointInCircle(mouseX, mouseY, ball.x, ball.y, diam / 2)) 
   {
-    fill(0,0,0,100);
-    ellipse(mouseX,mouseY,150,150);
-  }*/
-  if (pointInCircle(mouseX, mouseY, ball.x, ball.y, diam / 2)) {
     ball.x = mouseX;
     ball.y = mouseY;
   }
 }
-boolean pointInCircle(float x, float y, float a, float b, float r) {
-  if (dist(x, y, a, b) <= r+25) {
+boolean pointInCircle(float x, float y, float a, float b, float r) 
+{
+  if (dist(x, y, a, b) <= r+25) 
+  {
     return true;
-  } else {
+  } else 
+  {
     return false;
   }
 }
