@@ -18,6 +18,7 @@ int levelPlaying = 1;
 //setup 
 Map level = new Map();
 Hud h = new Hud();
+//redEnemy Test = new redEnemy();
 
 void setup()
 {

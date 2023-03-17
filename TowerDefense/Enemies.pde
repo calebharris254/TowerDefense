@@ -1,3 +1,4 @@
+//find out how pathing works make a for loop to look for if the array equals 4 at that index then spawn the dude if the variables for spawning are true
 class redEnemy
 {
   int health;
@@ -5,14 +6,25 @@ class redEnemy
   int size;
   int enemyX;
   int enemyY;
+  boolean isSpawning;
   
   public redEnemy(int enemyX, int enemyY)
   {
     health = 10;
     speed = 10;
     size = 10; 
+    isSpawning = true;
     this.enemyX = enemyX;
     this.enemyY = enemyY;
+  }
+  //draw variable
+  void drawRedEnemy()
+  {
+    if(isSpawning == true)
+    {
+      fill(255,0,0);
+      rect(enemyX, enemyY, size, size); 
+    }
   }
 }
 
