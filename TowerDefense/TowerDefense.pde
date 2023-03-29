@@ -36,8 +36,8 @@ void setup()
   fullScreen();
 
   textSize(100);
-  ball.x =  (width/1.22) ;
-  ball.y = height/3.1;
+  ball.x =  (width/1.5) ;
+  ball.y = height/3;
   diam = 50;
   //level.changeLevel(levelPlaying);
 }
@@ -51,8 +51,8 @@ void draw()
   level.drawLevel();
   //draws hud
   h.drawHud();
-  text(health,width / 1.175, 120 );// displays health
-  text(money,width / 1.175, 225 );// displays money
+  text(health,width / 1.475, 120 );// displays health
+  text(money,width / 1.475, 225 );// displays money
   fill(255, 0, 0);
   ellipse(ball.x, ball.y, diam, diam);
   //death mechanic
