@@ -17,6 +17,7 @@ class Map
   int [][]currentLevel;// = returnedLevel[12][12];
   public int spawnX;
   public int spawnY;
+  float mapSize;
 
   public Map( int level )
   {
@@ -27,6 +28,8 @@ class Map
 
   public int[][] loadLevel(int levelType)
   {
+    mapSize = 88;
+    //((height+width)/2)/17
     if (levelType == 1)
     {
       int [][]returnedLevel = {
@@ -45,7 +48,8 @@ class Map
 
       };
       return returnedLevel;
-    } else if (levelType == 2)
+      } 
+    else if (levelType == 2)
     {
       int [][]returnedLevel = {
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2},
@@ -64,6 +68,29 @@ class Map
       };
       return returnedLevel;
     }
+    /*
+    empty level for making a level 
+    else if(levelType == 3 and so on)
+    {
+      int [][]returnedLevel = {
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+        {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
+
+      };
+      return returnedLevel;
+    }
+    */
+    
 
 
     //gives it nothing if level is nothing
@@ -71,34 +98,42 @@ class Map
   }
   //method for drwing level
   //fix better later because huds off a bit just a little messing and it will fix
+  //draws level using level size variable
   public void drawLevel()
   {
     //for loop to scan stuff
     for (int i = 0; i < 12; i++)
     {
+      
       for (int j = 0; j < 12; j++)
       {
+        
         stroke(12);
         if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 1)
         {
           fill(255, 255, 0);
-          rect(i*(((height+width)/2)/17), j*(((height+width)/2)/17), (width/17), (((height+width)/2)/17));
+          rect(i*(mapSize), j*(mapSize), (width/17), (mapSize));
         } else if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 4)
         {
           fill(0, 0, 255);
-          rect(i*(((height+width)/2)/17), j*(((height+width)/2)/17), (width/17), (((height+width)/2)/17));
+          rect(i*(mapSize), j*(mapSize), (width/17), (mapSize));
         } else if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 2)
         {
           fill(0, 255, 0);
-          rect(i*(((height+width)/2)/17), j*(((height+width)/2)/17), (width/17), (((height+width)/2)/17));
+          rect(i*(mapSize), j*(mapSize), (width/17), (mapSize));
         } else if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 3)
         {
           fill(255, 0, 0);
-          rect(i*(((height+width)/2)/17), j*(((height+width)/2)/17), (width/17), (((height+width)/2)/17));
+          rect(i*(mapSize), j*(mapSize), (width/17), (mapSize));
         }
+        
       }
+      
     }
+    
   }
+  //changes levels so you can play on multiple diffrent levels
+  
   public int changeLevel(int levelChange)
   {
     levelPlaying = levelChange;
@@ -119,6 +154,17 @@ class Map
     }
     return 0;
   }
+  //Finds center of the squares so the enemy can move towards it
+  
+  void findCenter()
+  {
+    
+    
+    
+     
+  }
+  //Finds the spawn point so the enemie can initally spawn and start pathfinding
+  
   void findSpawnpoint()
   {
     for (int i = 0; i < 12; i++ )

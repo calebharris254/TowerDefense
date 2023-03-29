@@ -1,6 +1,6 @@
 /*
 ////////////////////////////////////////////////////////////
-          -Goblin Smashers The Tower Defense Game-
+          -Goblin Smashers the Tower Defense Game-
 
                     Made by
      Caleb Harris, Will/James Mccallie, and Joshua Poppy 
@@ -13,7 +13,8 @@ int money = 500;
 float diam;
 //level about to be loaded can be changed if .changeLevel is used 
 int levelPlaying;
-
+float centerX;
+float centerY;
 
 
 //setup 
@@ -36,23 +37,23 @@ void setup()
   fullScreen();
 
   textSize(100);
-  ball.x =  (width/1.5) ;
-  ball.y = height/3;
+  ball.x =  (width/1.22) ;
+  ball.y = height/3.1;
   diam = 50;
   //level.changeLevel(levelPlaying);
 }
 
 void draw()
 {
-  
+  System.out.println("Height =" + height+ "width ="+ width );
   background(255);
   //redEnemy();
   //draws level
   level.drawLevel();
   //draws hud
   h.drawHud();
-  text(health,width / 1.475, 120 );// displays health
-  text(money,width / 1.475, 225 );// displays money
+  text(health,width / 1.175, 120 );// displays health
+  text(money,width / 1.175, 225 );// displays money
   fill(255, 0, 0);
   ellipse(ball.x, ball.y, diam, diam);
   //death mechanic

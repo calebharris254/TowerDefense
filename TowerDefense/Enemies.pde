@@ -1,4 +1,5 @@
 //find out how pathing works make a for loop to look for if the array equals 4 at that index then spawn the dude if the variables for spawning are true
+////Theme Goblins
 class redEnemy
 {
   //currentLevel[j][i] == 1
