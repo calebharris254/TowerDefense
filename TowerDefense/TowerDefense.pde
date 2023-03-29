@@ -12,14 +12,15 @@ int health = 100;
 int money = 500;
 float diam;
 //level about to be loaded can be changed if .changeLevel is used 
-int levelPlaying = 1;
+int levelPlaying;
 
 
 
 //setup 
-Map level = new Map();
+//change level by putting a 1 or a 2 in the map slot
+Map level = new Map(2);
 Hud h = new Hud();
-//redEnemy Test = new redEnemy();
+redEnemy Test = new redEnemy();
 
 Sprite ball = new Sprite();
 class Sprite 
@@ -33,6 +34,7 @@ class Sprite
 void setup()
 {
   fullScreen();
+
   textSize(100);
   ball.x =  (width/1.22) ;
   ball.y = height/3.1;
@@ -42,6 +44,9 @@ void setup()
 
 void draw()
 {
+  
+  background(255);
+  //redEnemy();
   //draws level
   level.drawLevel();
   //draws hud
@@ -50,11 +55,16 @@ void draw()
   text(money,width / 1.175, 225 );// displays money
   fill(255, 0, 0);
   ellipse(ball.x, ball.y, diam, diam);
+  //death mechanic
   if(health == 0)
   {
   text("GAME OVER",width/2.5,height/2);
   noLoop();
   }
+  //draws enemy and does pathfinding
+  Test.drawRedEnemy();
+  Test.pathfinding();
+  rectMode(CORNER);
 }
 void keyPressed()
 {
