@@ -18,7 +18,7 @@ int levelPlaying;
 
 //setup 
 //change level by putting a 1 or a 2 in the map slot
-Map level = new Map(2);
+Map level = new Map(1);
 Hud h = new Hud();
 redEnemy Test = new redEnemy();
 
@@ -34,6 +34,7 @@ class Sprite
 void setup()
 {
   fullScreen();
+  //size(1600,1000);
 
   textSize(100);
   ball.x =  (width/1.5) ;
@@ -44,6 +45,13 @@ void setup()
 
 void draw()
 {
+  
+  //test
+  float newX = level.findCenter(level.spawnX);
+  float newY = level.findCenter(level.spawnY);
+  println("level x "+ newX+" level Y" + newY);
+  //println("enemyX "+"enemyY ");
+  //
   
   background(255);
   //redEnemy();
@@ -63,8 +71,9 @@ void draw()
   }
   //draws enemy and does pathfinding
   Test.drawRedEnemy();
-  Test.pathfinding();
   rectMode(CORNER);
+  Test.pathfinding();
+  
 }
 void keyPressed()
 {

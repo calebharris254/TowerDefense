@@ -17,7 +17,7 @@ class Map
   int [][]currentLevel;// = returnedLevel[12][12];
   public int spawnX;
   public int spawnY;
-  float mapSize;
+  int mapSize;
 
   public Map( int level )
   {
@@ -155,14 +155,25 @@ class Map
     return 0;
   }
   //Finds center of the squares so the enemy can move towards it
-  
-  void findCenter()
+  //returnedLevel[int x][int y]
+  // find center on actual game screen by having to given coordnates normally j and i
+  public float findCenter(int x)
   {
-    
-    
-    
+    float newCoords;
+    newCoords = (x*mapSize)+mapSize/2;
+    return newCoords;
      
   }
+  /*
+   public float[] findCenter(int x, int y)
+  {
+    float[] newCoords = new float[2];
+    newCoords[0] = (x*mapSize)+mapSize/2;
+    newCoords[1] = (y*mapSize)+mapSize/2;
+    return newCoords;
+     
+  }
+  */
   //Finds the spawn point so the enemie can initally spawn and start pathfinding
   
   void findSpawnpoint()
