@@ -2,22 +2,24 @@
 class sniperTower
 {
   
-  int towerX;
-  int towerY;
+  float towerX;
+  float towerY;
   int size;
   float fireRate;
   float range;
   int damage;
+  boolean placed = false;
   
-  public sniperTower(int towerX, int towerY)
+  public void sniperTowerd(int towerX, int towerY)
   {
     //damage, size, fireRate, and range are all going to change 
     damage = 5;
-     size = 10; 
+     size = 50; 
      fireRate = 4.0;
      range = 9.0;
      this.towerX = towerX;
      this.towerY = towerY;
+     return;
   }
 }
 
