@@ -1,5 +1,5 @@
 //Theme Goblins
-class sniperTower
+class waterKnight
 {
   
   int towerX;
@@ -9,7 +9,7 @@ class sniperTower
   float range;
   int damage;
   
-  public sniperTower(int towerX, int towerY)
+  public waterKnight(int towerX, int towerY)
   {
     //damage, size, fireRate, and range are all going to change 
     damage = 5;
@@ -22,7 +22,7 @@ class sniperTower
 }
 
 
-class bazookaTower
+class fireKnight
 {
   int towerX;
   int towerY;
@@ -31,7 +31,7 @@ class bazookaTower
   float range;
   int damage;
   
-  public bazookaTower(int towerX, int towerY)
+  public fireKnight(int towerX, int towerY)
   {
     //damage, size, fireRate, and range are all going to change 
     damage = 5;
@@ -43,7 +43,7 @@ class bazookaTower
   }
 }
 
-class rifleTower
+class airKnight
 {
   int towerX;
   int towerY;
@@ -52,7 +52,7 @@ class rifleTower
   float range;
   int damage;
   
-  public rifleTower(int towerX, int towerY)
+  public airKnight(int towerX, int towerY)
   {
     //damage, size, fireRate, and range are all going to change 
     damage = 5;
@@ -64,7 +64,7 @@ class rifleTower
   }
 }
 
-class smgTower
+class earthKnight
 {
   int towerX;
   int towerY;
@@ -73,7 +73,7 @@ class smgTower
   float range;
   int damage;
 
-  public smgTower(int towerX, int towerY)
+  public earthKnight(int towerX, int towerY)
   {
     //damage, size, fireRate, and range are all going to change 
     damage = 2;
@@ -85,7 +85,7 @@ class smgTower
   }
 }
 
-class iceTower
+class iceKnight
 {
   int towerX;
   int towerY;
@@ -94,13 +94,33 @@ class iceTower
   float range;
   int damage;
 
-  public iceTower(int towerX, int towerY)
+  public iceKnight(int towerX, int towerY)
   {
     //damage, size, fireRate, and range are all going to change 
     damage = 2;
     size = 10;
     fireRate = 5.0;
     range = 10.0;
+    this.towerX = towerX;
+    this.towerY = towerY;
+  }
+  
+  class energyKnight
+{
+  int towerX;
+  int towerY;
+  int size;
+  float fireRate;
+  float range;
+  int damage;
+  
+  public energyKnight(int towerX, int towerY)
+  {
+    //damage, size, fireRate, and range are all going to change 
+    damage = 5;
+    size = 10;
+    fireRate = 3.0;
+    range = 3.0;
     this.towerX = towerX;
     this.towerY = towerY;
   }
