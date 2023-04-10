@@ -2,22 +2,28 @@
 class waterKnight
 {
   
-  int towerX;
-  int towerY;
+  float towerX;
+  float towerY;
   int size;
   float fireRate;
   float range;
   int damage;
+  boolean placed = false;
   
+<<<<<<< HEAD
   public waterKnight(int towerX, int towerY)
+=======
+  public void sniperTowerd(int towerX, int towerY)
+>>>>>>> fbfe7caecf072c6afd8aa60fa5eed4f50816af70
   {
     //damage, size, fireRate, and range are all going to change 
     damage = 5;
-     size = 10; 
+     size = 50; 
      fireRate = 4.0;
      range = 9.0;
      this.towerX = towerX;
      this.towerY = towerY;
+     return;
   }
 }
 

@@ -60,7 +60,7 @@ class redEnemy
   void moveEnemy(int ogX , int ogY , int dX , int dY)
   {
      
-     enemyX = (dX*level.mapSize)+level.mapSize/2; //<>//
+     enemyX = (dX*level.mapSize)+level.mapSize/2; //<>// //<>//
      enemyY = (dY*level.mapSize)+level.mapSize/2;
      drawRedEnemy();
      originX = dX;

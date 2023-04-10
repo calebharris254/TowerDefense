@@ -21,25 +21,18 @@ int levelPlaying;
 Map level = new Map(1);
 Hud h = new Hud();
 redEnemy Test = new redEnemy();
-
-Sprite ball = new Sprite();
-class Sprite 
-{
-  float x;
-  float y;
-  float dx;
-  float dy;
-}
+sniperTower snip = new sniperTower();
 
 void setup()
 {
   fullScreen();
   //size(1600,1000);
-
+  snip.towerX = (width/1.5);
+  snip.towerY = height/3;
+  snip.size = 50;
   textSize(100);
-  ball.x =  (width/1.5) ;
-  ball.y = height/3;
-  diam = 50;
+ 
+
   //level.changeLevel(levelPlaying);
 }
 
@@ -62,7 +55,7 @@ void draw()
   text(health,width / 1.475, 120 );// displays health
   text(money,width / 1.475, 225 );// displays money
   fill(255, 0, 0);
-  ellipse(ball.x, ball.y, diam, diam);
+  ellipse(snip.towerX, snip.towerY, snip.size, snip.size);
   //death mechanic
   if(health == 0)
   {
@@ -84,13 +77,20 @@ void keyPressed()
 }
 void mouseDragged()
 {
-  if (pointInCircle(mouseX, mouseY, ball.x, ball.y, diam / 2)) 
+  if (pointInSniper(mouseX, mouseY, snip.towerX, snip.towerY, snip.size / 2) && snip.placed == false) 
   {
-    ball.x = mouseX;
-    ball.y = mouseY;
+    snip.towerX = mouseX;
+    snip.towerY = mouseY;
   }
 }
-boolean pointInCircle(float x, float y, float a, float b, float r) 
+void mouseReleased()
+{
+ if (pointInSniper(mouseX, mouseY, snip.towerX, snip.towerY, snip.size / 2) && snip.placed == false) 
+  {
+    snip.placed = true;
+  }
+}
+boolean pointInSniper(float x, float y, float a, float b, float r) 
 {
   if (dist(x, y, a, b) <= r+25) 
   {
