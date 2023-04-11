@@ -21,7 +21,7 @@ int levelPlaying;
 Map level = new Map(1);
 Hud h = new Hud();
 redEnemy Test = new redEnemy();
-sniperTower snip = new sniperTower();
+waterKnight snip = new waterKnight();
 
 void setup()
 {

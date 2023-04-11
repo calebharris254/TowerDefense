@@ -10,14 +10,12 @@ class waterKnight
   int damage;
   boolean placed = false;
   
-<<<<<<< HEAD
-  public waterKnight(int towerX, int towerY)
-=======
-  public void sniperTowerd(int towerX, int towerY)
->>>>>>> fbfe7caecf072c6afd8aa60fa5eed4f50816af70
+//<<<<<<< HEAD
+
+  public void waterKnightVoid(int towerX, int towerY)
   {
     //damage, size, fireRate, and range are all going to change 
-    damage = 5;
+     damage = 5;
      size = 50; 
      fireRate = 4.0;
      range = 9.0;
@@ -26,8 +24,6 @@ class waterKnight
      return;
   }
 }
-
-
 class fireKnight
 {
   int towerX;
@@ -110,7 +106,7 @@ class iceKnight
     this.towerX = towerX;
     this.towerY = towerY;
   }
-  
+}
   class energyKnight
 {
   int towerX;
