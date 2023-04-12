@@ -3,6 +3,7 @@
 ////Theme Goblins
 class redEnemy
 {
+  //Direction: 1-up  2-down  3-left  4-right
   //currentLevel[j][i] == 1
   int health;
   float speed;
@@ -13,13 +14,12 @@ class redEnemy
   boolean isDead;
   boolean attack;
   boolean firstMove;
-  int destX;
-  int destY;
   int originX;
   int originY;
   int enemyXG;
   int enemyYG;
-  
+  int direction;
+  int destX = level.spawnX, destY = level.spawnY+1;
   
   public redEnemy()
   {
@@ -28,19 +28,21 @@ class redEnemy
     enemyX = (level.spawnX*level.mapSize)+level.mapSize/2;
     //(level.spawnX*92)+5
     enemyY = (level.spawnY*level.mapSize) + level.mapSize/2;
-    enemyXG = level.spawnX;
-    enemyYG = level.spawnY;
+    //enemyXG = level.spawnX;
+    //enemyYG = level.spawnY;
     //(level.spawnY*92)+35
     health = 1;
-    speed = 1.25;
+    speed = 5.25;//1.25
     size = 50; 
     isSpawning = true;
     isDead = false;// variable to see if its dead
     attack = false;//if it got to the base take damage and delete the dude
     firstMove = true;
     speed = 1;
+    direction = 2;
     //this.enemyX = enemyX;
     //this.enemyY = enemyY;
+    findDest();
   }
   //draw variable
   void drawRedEnemy()
@@ -56,19 +58,38 @@ class redEnemy
       
     }
   }
+  /*
   //moves enemy to given coords
   void moveEnemy(int ogX , int ogY , int dX , int dY)
   {
      
-     enemyX = (dX*level.mapSize)+level.mapSize/2; //<>//
+     enemyX = (dX*level.mapSize)+level.mapSize/2;
      enemyY = (dY*level.mapSize)+level.mapSize/2;
      drawRedEnemy();
      originX = dX;
      originY = dY;
   }
+  */
   //pathfinding method uses the 2d array to find its way around
   void pathfinding()
   {
+    if( reachedDest() )
+    {
+      //snap to grid
+      enemyX = destX*level.mapSize+level.mapSize/2; //<>//
+      enemyY = destY*level.mapSize+level.mapSize/2;
+      findDest();
+      System.out.println("try move");
+    }
+    switch(direction)
+    {
+      case 1: enemyY -= speed; break;
+      case 2: enemyY += speed; break;
+      case 3: enemyX -= speed; break;
+      case 4: enemyX += speed; break;
+    }
+  
+    /*
     //sets origin as the spawnpoint so it knows where its coming from
     if(firstMove == true)
     {
@@ -100,9 +121,57 @@ class redEnemy
            
          }
        }
+       */
      }
     
      
+  
+  void findDest()
+  {
+     if( destX > 0 && direction != 4 && (level.currentLevel[destX-1][destY]==1) ) //Look left
+    {
+      System.out.println("Left");
+      destX--;
+      direction = 3;
+      return;
+    }
+    if( destX < level.mapSize && direction != 3 && (level.currentLevel[destX+1][destY]==1) ) //Look right
+    {
+      System.out.println("right");
+      destX++;
+      direction = 4;
+      return;
+    }
+    if( destY > 0 && direction != 2 && (level.currentLevel[destX][destY-1]==1) ) //Look up
+    {
+      System.out.println("UP");
+      destY--;
+      direction = 1;
+      return;
+    }
+    if( destY < level.mapSize && direction != 1 && (level.currentLevel[destX][destY+1]==1) ) //Look down
+    {
+      System.out.println("down");
+      destY++;
+      direction = 2;
+      return;
+    }
+      
+    //originX = xPos;
+    //originY = yPos;
+  }
+  public boolean reachedDest()
+  {
+    if( direction == 1 && enemyY <= destY*level.mapSize+level.mapSize/2 )
+      return true;
+   if( direction == 2 && enemyY >= destY*level.mapSize+level.mapSize/2 )
+      return true;
+    if( direction == 3 && enemyX <= destX*level.mapSize+level.mapSize/2 )
+      return true;
+    if( direction == 4 && enemyX >= destX*level.mapSize+level.mapSize/2 )
+      return true;
+    System.out.println("havent reached dest");
+    return false;
   }
 }
 

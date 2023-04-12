@@ -5,6 +5,7 @@
                     Made by
      Caleb Harris, Will/James Mccallie, and Joshua Poppy 
 ///////////////////////////////////////////////////////////
+shit broke
 */
 //Variables area
 int mapX, mapY;
@@ -13,14 +14,14 @@ int money = 500;
 float diam;
 //level about to be loaded can be changed if .changeLevel is used 
 int levelPlaying;
-
+int destX = -1, destY = -1;
 
 
 //setup 
 //change level by putting a 1 or a 2 in the map slot
 Map level = new Map(1);
 Hud h = new Hud();
-redEnemy Test = new redEnemy();
+redEnemy Test = new redEnemy(); //<>//
 
 Sprite ball = new Sprite();
 class Sprite 
@@ -45,7 +46,7 @@ void setup()
 
 void draw()
 {
-  
+  level.determineStartAndEnd();
   //test
   float newX = level.findCenter(level.spawnX);
   float newY = level.findCenter(level.spawnY);
@@ -70,9 +71,11 @@ void draw()
   noLoop();
   }
   //draws enemy and does pathfinding
-  Test.drawRedEnemy();
+  Test.drawRedEnemy(); //<>//
   rectMode(CORNER);
+  //Test.findDest();
   Test.pathfinding();
+ // Test.reachedDest();
   
 }
 void keyPressed()

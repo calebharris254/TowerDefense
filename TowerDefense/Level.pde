@@ -10,20 +10,25 @@
 //3 = base where the enemies path to and kill
 //4 = enemy spawn
 //12x12 board
+//X IS J
+//Y IS I THIS IS HOW ITS SUPPOSED TO BE YOUS TUPID STIPIC ITCH
 
 class Map
 {
   //int levelPlaying = 1;
   int [][]currentLevel;// = returnedLevel[12][12];
-  public int spawnX;
-  public int spawnY;
+  public int spawnX = -1;
+  public int spawnY = -1;
   int mapSize;
+  //int destX = -1;
+  //int destY = -1;
 
   public Map( int level )
   {
     currentLevel = loadLevel(level);
     findSpawnpoint();
     levelPlaying = level;
+    determineStartAndEnd();
   }
 
   public int[][] loadLevel(int levelType)
@@ -33,6 +38,7 @@ class Map
     if (levelType == 1)
     {
       int [][]returnedLevel = {
+      //  {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
         {2, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
         {2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
         {2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -112,19 +118,19 @@ class Map
         if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 1)
         {
           fill(255, 255, 0);
-          rect(i*(mapSize), j*(mapSize), (width/17), (mapSize));
+          rect(j*(mapSize), i*(mapSize), (width/17), (mapSize));
         } else if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 4)
         {
           fill(0, 0, 255);
-          rect(i*(mapSize), j*(mapSize), (width/17), (mapSize));
+          rect(j*(mapSize), i*(mapSize), (width/17), (mapSize));
         } else if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 2)
         {
           fill(0, 255, 0);
-          rect(i*(mapSize), j*(mapSize), (width/17), (mapSize));
+          rect(j*(mapSize), i*(mapSize), (width/17), (mapSize));
         } else if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 3)
         {
           fill(255, 0, 0);
-          rect(i*(mapSize), j*(mapSize), (width/17), (mapSize));
+          rect(j*(mapSize), i*(mapSize), (width/17), (mapSize));
         }
         
       }
@@ -184,8 +190,8 @@ class Map
       {
         if( currentLevel[j][i] == 4 )
         {
-          spawnX = i;
-          spawnY = j;
+          spawnX = j;
+          spawnY = i;
           println("X: " + spawnX + "  Y:"+ spawnY);
           return;
         }
@@ -198,5 +204,25 @@ class Map
       }
     }
   }
-  
+  public void determineStartAndEnd()
+  {
+    for(int i = 0; i < 12; i++)
+    {
+      for(int j = 0; j < 12; j++)
+      {
+        if(currentLevel[j][i]==4)
+        {
+          spawnX=i;
+          spawnY=j;
+        }
+        if(currentLevel[j][i]==3)
+        {
+          destX = j;
+          destY = i;
+        }
+      }
+    }
+  }
 }
+
+  
