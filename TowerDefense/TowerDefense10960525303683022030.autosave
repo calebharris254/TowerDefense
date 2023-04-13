@@ -21,7 +21,8 @@ int destX = -1, destY = -1;
 //change level by putting a 1 or a 2 in the map slot
 Map level = new Map(1);
 Hud h = new Hud();
-redEnemy Test = new redEnemy(); //<>// //<>//
+redEnemy Test = new redEnemy();
+
 
 Sprite ball = new Sprite();
 class Sprite 
@@ -31,19 +32,16 @@ class Sprite
   float dx;
   float dy;
 }
-//redEnemy Test = new redEnemy();
-waterKnight snip = new waterKnight();
 
 void setup()
 {
   fullScreen();
   //size(1600,1000);
-  snip.towerX = (width/1.5);
-  snip.towerY = height/3;
-  snip.size = 50;
-  textSize(100);
- 
 
+  textSize(100);
+  ball.x =  (width/1.5) ;
+  ball.y = height/3;
+  diam = 50;
   //level.changeLevel(levelPlaying);
 }
 
@@ -66,15 +64,15 @@ void draw()
   text(health,width / 1.475, 120 );// displays health
   text(money,width / 1.475, 225 );// displays money
   fill(255, 0, 0);
-  ellipse(snip.towerX, snip.towerY, snip.size, snip.size);
+  ellipse(ball.x, ball.y, diam, diam);
   //death mechanic
   if(health == 0)
   {
   text("GAME OVER",width/2.5,height/2);
   noLoop();
-  } //<>//
+  }
   //draws enemy and does pathfinding
-  Test.drawRedEnemy(); //<>//
+  Test.drawRedEnemy();
   rectMode(CORNER);
   //Test.findDest();
   Test.pathfinding();
@@ -90,20 +88,13 @@ void keyPressed()
 }
 void mouseDragged()
 {
-  if (pointInSniper(mouseX, mouseY, snip.towerX, snip.towerY, snip.size / 2) && snip.placed == false) 
+  if (pointInCircle(mouseX, mouseY, ball.x, ball.y, diam / 2)) 
   {
-    snip.towerX = mouseX;
-    snip.towerY = mouseY;
+    ball.x = mouseX;
+    ball.y = mouseY;
   }
 }
-void mouseReleased()
-{
- if (pointInSniper(mouseX, mouseY, snip.towerX, snip.towerY, snip.size / 2) && snip.placed == false) 
-  {
-    snip.placed = true;
-  }
-}
-boolean pointInSniper(float x, float y, float a, float b, float r) 
+boolean pointInCircle(float x, float y, float a, float b, float r) 
 {
   if (dist(x, y, a, b) <= r+25) 
   {

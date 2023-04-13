@@ -63,11 +63,7 @@ class redEnemy
   void moveEnemy(int ogX , int ogY , int dX , int dY)
   {
      
-<<<<<<< HEAD
      enemyX = (dX*level.mapSize)+level.mapSize/2;
-=======
-     enemyX = (dX*level.mapSize)+level.mapSize/2;  //<>//
->>>>>>> 4b502f78ab0919a86563b6581325ab0756b994b8
      enemyY = (dY*level.mapSize)+level.mapSize/2;
      drawRedEnemy();
      originX = dX;
@@ -80,7 +76,7 @@ class redEnemy
     if( reachedDest() )
     {
       //snap to grid
-      enemyX = destX*level.mapSize+level.mapSize/2; //<>//
+      enemyX = destX*level.mapSize+level.mapSize/2;
       enemyY = destY*level.mapSize+level.mapSize/2;
       findDest();
       System.out.println("try move");
