@@ -1,6 +1,18 @@
 
 //find out how pathing works make a for loop to look for if the array equals 4 at that index then spawn the dude if the variables for spawning are true
 ////Theme Goblins
+/*
+--Checklist--
+1. try to figure out how enemies actually act when damage etc
+2. decide againsit other classes or nott 
+3.for the future get this working on other maps
+4. figure a spawning system out rounds or specfic level scripts 
+5. color and look
+6.finally polish and comment
+7.get the enemies to react to damage 
+8.when done with this help with other parts of the game get finished
+
+*/
 class redEnemy
 {
   //Direction: 1-up  2-down  3-left  4-right
@@ -25,20 +37,25 @@ class redEnemy
   {
     //still buggy fix when you can and stress test
     //translate the array coords into a coord on the actual plane
-    enemyX = (level.spawnX*level.mapSize)+level.mapSize/2;
+    enemyX = (level.spawnX*level.mapSize)+level.mapSize/2; //<>//
     //(level.spawnX*92)+5
     enemyY = (level.spawnY*level.mapSize) + level.mapSize/2;
+    
+    //ANNOYING FIX
+    int temp = enemyX;
+    enemyX = enemyY;
+    enemyY = temp;
+    
     //enemyXG = level.spawnX;
     //enemyYG = level.spawnY;
     //(level.spawnY*92)+35
     health = 1;
-    speed = 5.25;//1.25
     size = 50; 
     isSpawning = true;
     isDead = false;// variable to see if its dead
     attack = false;//if it got to the base take damage and delete the dude
     firstMove = true;
-    speed = 1;
+    speed = 3;
     direction = 2;
     //this.enemyX = enemyX;
     //this.enemyY = enemyY;
@@ -62,12 +79,9 @@ class redEnemy
   //moves enemy to given coords
   void moveEnemy(int ogX , int ogY , int dX , int dY)
   {
-     
-<<<<<<< HEAD
+   
      enemyX = (dX*level.mapSize)+level.mapSize/2;
-=======
      enemyX = (dX*level.mapSize)+level.mapSize/2;  //<>//
->>>>>>> 4b502f78ab0919a86563b6581325ab0756b994b8
      enemyY = (dY*level.mapSize)+level.mapSize/2;
      drawRedEnemy();
      originX = dX;
@@ -176,6 +190,10 @@ class redEnemy
       return true;
     System.out.println("havent reached dest");
     return false;
+  }
+  void attackBase()
+  {
+     
   }
 }
 

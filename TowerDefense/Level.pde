@@ -190,8 +190,8 @@ class Map
       {
         if( currentLevel[j][i] == 4 )
         {
-          spawnX = j;
-          spawnY = i;
+          spawnX = i;
+          spawnY = j;
           println("X: " + spawnX + "  Y:"+ spawnY);
           return;
         }

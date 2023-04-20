@@ -21,6 +21,7 @@ int destX = -1, destY = -1;
 //change level by putting a 1 or a 2 in the map slot
 Map level = new Map(1);
 Hud h = new Hud();
+ArrayList<redEnemy> bads = new ArrayList<redEnemy>();
 redEnemy Test = new redEnemy(); //<>// //<>//
 
 Sprite ball = new Sprite();
@@ -86,6 +87,10 @@ void keyPressed()
   if(key == 'k')
   {
    health=0;
+  }
+  if(key == 'e')
+  {
+    bads.add( new redEnemy() );
   }
 }
 void mouseDragged()
