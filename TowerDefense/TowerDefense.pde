@@ -23,15 +23,6 @@ Map level = new Map(1);
 Hud h = new Hud();
 ArrayList<redEnemy> bads = new ArrayList<redEnemy>();
 redEnemy Test = new redEnemy(); //<>// //<>//
-
-Sprite ball = new Sprite();
-class Sprite 
-{
-  float x;
-  float y;
-  float dx;
-  float dy;
-}
 //redEnemy Test = new redEnemy();
 waterKnight snip = new waterKnight();
 
@@ -80,7 +71,10 @@ void draw()
   //Test.findDest();
   Test.pathfinding();
  // Test.reachedDest();
-  
+ if (snip.towerX <= (level.mapSize*12)&& snip.towerY <= (level.mapSize*12))
+ {
+   snip.onBoard = true;
+ }
 }
 void keyPressed()
 {
@@ -101,9 +95,10 @@ void mouseDragged()
     snip.towerY = mouseY;
   }
 }
+
 void mouseReleased()
 {
- if (pointInSniper(mouseX, mouseY, snip.towerX, snip.towerY, snip.size / 2) && snip.placed == false) 
+ if (pointInSniper(mouseX, mouseY, snip.towerX, snip.towerY, snip.size / 2) && snip.placed == false && snip.onBoard == true) 
   {
     snip.placed = true;
   }

@@ -9,6 +9,7 @@ class waterKnight
   float range;
   int damage;
   boolean placed = false;
+  boolean onBoard = false;
   
 //<<<<<<< HEAD
 
