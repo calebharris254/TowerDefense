@@ -21,8 +21,8 @@ int destX = -1, destY = -1;
 //change level by putting a 1 or a 2 in the map slot
 Map level = new Map(1);
 Hud h = new Hud();
-ArrayList<redEnemy> bads = new ArrayList<redEnemy>();
-redEnemy Test = new redEnemy(); //<>// //<>//
+ArrayList<MuddGoblin> bads = new ArrayList<MuddGoblin>();
+MuddGoblin Test = new MuddGoblin(); //<>// //<>//
 
 Sprite ball = new Sprite();
 class Sprite 
@@ -43,6 +43,7 @@ void setup()
   snip.towerY = height/3;
   snip.size = 50;
   textSize(100);
+  frameRate(60);
  
 
   //level.changeLevel(levelPlaying);
@@ -88,9 +89,14 @@ void keyPressed()
   {
    health=0;
   }
+  //kill enemy
+  if(key == 'w')
+  {
+    Test.health = 0;
+  }
   if(key == 'e')
   {
-    bads.add( new redEnemy() );
+    bads.add( new MuddGoblin() );
   }
 }
 void mouseDragged()

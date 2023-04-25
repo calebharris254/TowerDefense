@@ -10,7 +10,7 @@ class waterKnight
   int damage;
   boolean placed = false;
   
-//<<<<<<< HEAD
+
 
   public void waterKnightVoid(int towerX, int towerY)
   {

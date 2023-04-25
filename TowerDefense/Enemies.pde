@@ -11,9 +11,17 @@
 6.finally polish and comment
 7.get the enemies to react to damage 
 8.when done with this help with other parts of the game get finished
+9. make the enemies into goblin **
 
+player = loadImage("geogersBack.png");
+       imageMode(CENTER);
+       player.resize(400,400);
+       image(player, pokePlayerX, pokePlayerY);
+       imageMode(CORNER);
+       1 = red
+       
 */
-class redEnemy
+class MuddGoblin
 {
   //Direction: 1-up  2-down  3-left  4-right
   //currentLevel[j][i] == 1
@@ -22,7 +30,10 @@ class redEnemy
   int size;
   int enemyX;
   int enemyY;
+  PImage mud;
+  PImage redGoblin;
   boolean isSpawning;
+  boolean isHit;
   boolean isDead;
   boolean attack;
   boolean firstMove;
@@ -33,7 +44,7 @@ class redEnemy
   int direction;
   int destX = level.spawnX, destY = level.spawnY+1;
   
-  public redEnemy()
+  public MuddGoblin()
   {
     //still buggy fix when you can and stress test
     //translate the array coords into a coord on the actual plane
@@ -50,29 +61,41 @@ class redEnemy
     //enemyYG = level.spawnY;
     //(level.spawnY*92)+35
     health = 1;
-    size = 50; 
+    size = 70; 
     isSpawning = true;
     isDead = false;// variable to see if its dead
     attack = false;//if it got to the base take damage and delete the dude
     firstMove = true;
     speed = 3;
     direction = 2;
+    isHit = false;
     //this.enemyX = enemyX;
     //this.enemyY = enemyY;
     findDest();
+    
   }
   //draw variable
   void drawRedEnemy()
   {
     //checks to see if spawning 
-    if(isSpawning == true)
+    if(isDead == false)
     {
+      mud = loadImage("Mud.png");
+      redGoblin = loadImage("red.png");
+      imageMode(CENTER);
+      redGoblin.resize(size,size);
+      image(redGoblin, enemyX, enemyY);
+      mud.resize(size,size);
+      image(mud, enemyX, enemyY);
+      imageMode(CORNER);
+      ifHit();
+      /*
       rectMode(CENTER);
       fill(255,0,0);
       rect(enemyX, enemyY, size, size); 
       print(" enemyX "+ enemyX+" , "+ "enemyY "+enemyY );
       rectMode(CORNER);
-      
+      */
     }
   }
   /*
@@ -91,55 +114,58 @@ class redEnemy
   //pathfinding method uses the 2d array to find its way around
   void pathfinding()
   {
-    if( reachedDest() )
+    if(isDead == false)
     {
-      //snap to grid
-      enemyX = destX*level.mapSize+level.mapSize/2; //<>//
-      enemyY = destY*level.mapSize+level.mapSize/2;
-      findDest();
-      System.out.println("try move");
-    }
-    switch(direction)
-    {
-      case 1: enemyY -= speed; break;
-      case 2: enemyY += speed; break;
-      case 3: enemyX -= speed; break;
-      case 4: enemyX += speed; break;
-    }
-  
-    /*
-    //sets origin as the spawnpoint so it knows where its coming from
-    if(firstMove == true)
-    {
-      originY = level.spawnY;
-      originX = level.spawnX;
-      firstMove = false;
-    }
+      if( reachedDest() )
+      {
+        //snap to grid
+        enemyX = destX*level.mapSize+level.mapSize/2; //<>//
+        enemyY = destY*level.mapSize+level.mapSize/2;
+        findDest();
+        System.out.println("try move");
+      }
+      switch(direction)
+      {
+        case 1: enemyY -= speed; break;
+        case 2: enemyY += speed; break;
+        case 3: enemyX -= speed; break;
+        case 4: enemyX += speed; break;
+      }
     
-    //for loop to scan array 
-    
-    
-     for(int i = originY; i < 12 ; i++)
-     {
-       for(int j = originX-1; j < 12 ; j++)
+      /*
+      //sets origin as the spawnpoint so it knows where its coming from
+      if(firstMove == true)
+      {
+        originY = level.spawnY;
+        originX = level.spawnX;
+        firstMove = false;
+      }
+      
+      //for loop to scan array 
+      
+      
+       for(int i = originY; i < 12 ; i++)
        {
-         if(level.loadLevel(levelPlaying)[j+mapX][i+mapY] == 1 && originX != -1 && originY != -1 && originX != 12 && originY != 12 ||
-            level.loadLevel(levelPlaying)[j+mapX][i+mapY] == 3 && originX != -1 && originY != -1 && originX != 12 && originY != 12)//checks for base 
+         for(int j = originX-1; j < 12 ; j++)
          {
-           //enemyXG = (enemyX/level.mapSize)-level.mapSize*2;
-           //enemyYG = (enemyY/level.mapSize)-level.mapSize*2;
-           destX = j;
-           destY = i;
-           //originX = en;
-           //originY = enemyYG;
-           moveEnemy(originX, originY , j , i);
-           System.out.println(" dest X: "+destX+" dest Y: " + destY);
-           System.out.println("origin X: "+originX+ " origin Y: "+originY);
-           System.out.println("Enemy grid X " + enemyXG + "enemy grid Y" + enemyYG );
-           
+           if(level.loadLevel(levelPlaying)[j+mapX][i+mapY] == 1 && originX != -1 && originY != -1 && originX != 12 && originY != 12 ||
+              level.loadLevel(levelPlaying)[j+mapX][i+mapY] == 3 && originX != -1 && originY != -1 && originX != 12 && originY != 12)//checks for base 
+           {
+             //enemyXG = (enemyX/level.mapSize)-level.mapSize*2;
+             //enemyYG = (enemyY/level.mapSize)-level.mapSize*2;
+             destX = j;
+             destY = i;
+             //originX = en;
+             //originY = enemyYG;
+             moveEnemy(originX, originY , j , i);
+             System.out.println(" dest X: "+destX+" dest Y: " + destY);
+             System.out.println("origin X: "+originX+ " origin Y: "+originY);
+             System.out.println("Enemy grid X " + enemyXG + "enemy grid Y" + enemyYG );
+             
+           }
          }
+         */
        }
-       */
      }
     
      
@@ -177,6 +203,17 @@ class redEnemy
       
     //originX = xPos;
     //originY = yPos;
+  }
+  void ifHit()
+  {
+    if(health == 0)
+    {
+      isDead = true;
+      //isSpawning = false;
+      System.out.println("That dude dead");
+      //noLoop();
+    }
+    
   }
   public boolean reachedDest()
   {
