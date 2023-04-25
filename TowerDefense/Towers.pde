@@ -24,6 +24,7 @@ class waterKnight
      this.towerY = towerY;
      return;
   }
+ 
 }
 class fireKnight
 {

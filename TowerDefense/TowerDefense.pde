@@ -22,6 +22,7 @@ int destX = -1, destY = -1;
 Map level = new Map(1);
 Hud h = new Hud();
 ArrayList<redEnemy> bads = new ArrayList<redEnemy>();
+
 redEnemy Test = new redEnemy(); //<>// //<>//
 //redEnemy Test = new redEnemy();
 waterKnight snip = new waterKnight();
@@ -75,6 +76,10 @@ void draw()
  {
    snip.onBoard = true;
  }
+ else
+ {
+   snip.onBoard = false;
+ }
 }
 void keyPressed()
 {
@@ -93,6 +98,7 @@ void mouseDragged()
   {
     snip.towerX = mouseX;
     snip.towerY = mouseY;
+   
   }
 }
 
