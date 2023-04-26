@@ -38,7 +38,7 @@ void setup()
   //size(1600,1000);
   snip.towerX = (width/1.5);
   snip.towerY = height/3;
-  snip.size = 50;
+  snip.size = 88;
   textSize(100);
   frameRate(60);
  
@@ -107,8 +107,8 @@ void mouseDragged()
 {
   if (pointInSniper(mouseX, mouseY, snip.towerX, snip.towerY, snip.size / 2) && snip.placed == false) 
   {
-    snip.towerX = mouseX;
-    snip.towerY = mouseY;
+    snip.towerX =  round(mouseX / snip.size) * snip.size + snip.size/2;
+    snip.towerY =  round(mouseY / snip.size) * snip.size + snip.size/2;
    
   }
 }
