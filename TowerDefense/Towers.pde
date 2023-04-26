@@ -9,6 +9,7 @@ class waterKnight
   float range;
   int damage;
   boolean placed = false;
+  boolean onBoard = false;
   
 
 
@@ -23,6 +24,7 @@ class waterKnight
      this.towerY = towerY;
      return;
   }
+ 
 }
 class fireKnight
 {
