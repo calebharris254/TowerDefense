@@ -17,7 +17,7 @@ class waterKnight
   {
     //damage, size, fireRate, and range are all going to change 
      damage = 5;
-     size = 50; 
+     size = 88; 
      fireRate = 4.0;
      range = 9.0;
      this.towerX = towerX;
