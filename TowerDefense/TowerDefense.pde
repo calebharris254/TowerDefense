@@ -28,13 +28,13 @@ int currentWave;
 Map level = new Map(1);
 Hud h = new Hud();
 
-ArrayList<Goblin> bads = new ArrayList<Goblin>(); //<>//
-Goblin Test = new Goblin(); //<>// //<>//
+ArrayList<Goblin> bads = new ArrayList<Goblin>(); //<>// //<>//
+HawiiGoblin Test = new HawiiGoblin(); //<>// //<>// //<>//
 
 //ArrayList<redEnemy> bads = new ArrayList<redEnemy>();
 
 
-//redEnemy Test = new redEnemy(); //<>// //<>//
+//redEnemy Test = new redEnemy(); //<>// //<>// //<>//
 //redEnemy Test = new redEnemy();
 waterKnight snip = new waterKnight();
 
@@ -77,12 +77,12 @@ void draw()
   {
   text("GAME OVER",width/2.5,height/2);
   noLoop();
-  } //<>//
+  } //<>// //<>//
   //draws enemy and does pathfinding
-  Test.drawGoblin(); //<>//
-  rectMode(CORNER); //<>//
+  Test.drawGoblin(); //<>// //<>//
+  rectMode(CORNER); //<>// //<>//
   //Test.findDest();
-  Test.pathfinding(); //<>//
+  Test.pathfinding(); //<>// //<>//
  // Test.reachedDest();
  if (snip.towerX <= (level.mapSize*12)&& snip.towerY <= (level.mapSize*12))
  {

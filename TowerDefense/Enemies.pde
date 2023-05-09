@@ -34,14 +34,6 @@ class Goblin
   int enemyX;
   int enemyY;
   int type;
-  PImage mud;
-  PImage redGoblin;
-  PImage greenGoblin;
-  PImage yellowGoblin;
-  PImage pinkGoblin;
-  PImage whiteGoblin;
-  PImage blackGoblin;
-  PImage blueGoblin;
   //PImage redGoblin;
   boolean isSpawning;
   boolean isHit;
@@ -54,6 +46,25 @@ class Goblin
   int enemyYG;
   int direction;
   int destX = level.spawnX, destY = level.spawnY+1;
+ // -----------------------------------------------------
+  //ASSETS SECTION
+  //types
+  PImage mud;
+  PImage rag;
+  PImage farm;
+  PImage clown;
+  PImage fancy;
+  PImage hawii;
+  PImage dress;
+  //Colors
+  PImage redGoblin;
+  PImage greenGoblin;
+  PImage yellowGoblin;
+  PImage pinkGoblin;
+  PImage whiteGoblin;
+  PImage blackGoblin;
+  PImage blueGoblin;
+  
   
   public Goblin()
   {
@@ -330,7 +341,7 @@ class Goblin
   }
   }
   
-//test on inhearitance
+//test on inhearitance lol it works super cool
 class RagGoblin extends Goblin
 {
   public RagGoblin()
@@ -338,94 +349,294 @@ class RagGoblin extends Goblin
     health = 2;
     speed = 2;
   }
-}
-
-class greenEnemy
-{
-  int health;
-  float speed;
-  int size;
-  int enemyX;
-  int enemyY;
-  
-  public greenEnemy(int enemyX, int enemyY)
+  void drawGoblin()
   {
-    health = 2;
-    speed = 1.75;
-    size = 10;
-    this.enemyX = enemyX;
-    this.enemyY = enemyY;
+    redGoblin = loadImage("red.png");      //1 health
+    blueGoblin = loadImage("blue.png");    //2 health
+    imageMode(CENTER);
+    if(health == 1)
+      {
+        redGoblin.resize(size,size);
+        image(redGoblin, enemyX, enemyY);
+      }
+      else if(health == 2)
+      {
+        blueGoblin.resize(size,size);
+        image(blueGoblin, enemyX, enemyY);
+      }
+      if(health > 0)
+      {
+        rag = loadImage("rag.png");
+        imageMode(CENTER);
+        //image(redGoblin, enemyX, enemyY);
+        rag.resize(size,size);
+        image(rag, enemyX, enemyY);
+      }
+      imageMode(CORNER);
+        
   }
 }
-
-class yellowEnemy
+class MudGoblin extends Goblin//Child Class
 {
-  int health;
-  float speed;
-  int size;
-  int enemyX;
-  int enemyY;  
-  
-  public yellowEnemy(int enemyX, int enemyY)
+  public MudGoblin()
+  {
+    health = 1;
+    speed = 1;
+  }
+  void drawGoblin()
+  {
+    redGoblin = loadImage("red.png");      //1 health
+    imageMode(CENTER);
+    if(health == 1)
+      {
+        redGoblin.resize(size,size);
+        image(redGoblin, enemyX, enemyY);
+      }
+      if(health > 0)
+      {
+        mud = loadImage("Mud.png");
+        imageMode(CENTER);
+        //image(redGoblin, enemyX, enemyY);
+        mud.resize(size,size);
+        image(mud, enemyX, enemyY);
+      }
+      imageMode(CORNER);
+        
+  }
+}
+class FarmGoblin extends Goblin
+{
+  public FarmGoblin()
+  {
+    health = 3;
+    speed = 3;
+  }
+  void drawGoblin()
+  {
+    redGoblin = loadImage("red.png");      //1 health
+    blueGoblin = loadImage("blue.png");    //2 health
+    pinkGoblin = loadImage("pink.png");    //3 health
+    
+    imageMode(CENTER);
+    if(health == 1)
+      {
+        redGoblin.resize(size,size);
+        image(redGoblin, enemyX, enemyY);
+      }
+      else if(health == 2)
+      {
+        blueGoblin.resize(size,size);
+        image(blueGoblin, enemyX, enemyY);
+      }
+      else if(health == 3)
+      {
+        pinkGoblin.resize(size,size);
+        image(pinkGoblin, enemyX, enemyY);
+      }
+      if(health > 0)
+      {
+        farm = loadImage("farm.png");
+        imageMode(CENTER);
+        //image(redGoblin, enemyX, enemyY);
+        farm.resize(size,size);
+        image(farm, enemyX, enemyY);
+      }
+      imageMode(CORNER);
+        
+  }
+}
+class HawiiGoblin extends Goblin
+{
+  public HawiiGoblin()
+  {
+    health = 6;
+    speed = 1;
+  }
+  void drawGoblin()
+  {
+    redGoblin = loadImage("red.png");      //1 health
+    blueGoblin = loadImage("blue.png");    //2 health
+    pinkGoblin = loadImage("pink.png");    //2 health
+    yellowGoblin = loadImage("yellow.png");    //2 health
+    greenGoblin = loadImage("green.png");    //2 health
+    whiteGoblin = loadImage("white.png");    //2 health
+    imageMode(CENTER);
+    if(health == 1)
+      {
+        redGoblin.resize(size,size);
+        image(redGoblin, enemyX, enemyY);
+      }
+      else if(health == 2)
+      {
+        blueGoblin.resize(size,size);
+        image(blueGoblin, enemyX, enemyY);
+      }
+      else if(health == 3)
+      {
+        pinkGoblin.resize(size,size);
+        image(pinkGoblin, enemyX, enemyY);
+      }
+      else if(health == 4)
+      {
+        yellowGoblin.resize(size,size);
+        image(yellowGoblin, enemyX, enemyY);
+      }
+      else if(health == 5)
+      {
+        greenGoblin.resize(size,size);
+        image(greenGoblin, enemyX, enemyY);
+      }
+      else if(health == 6)
+      {
+        whiteGoblin.resize(size,size);
+        image(whiteGoblin, enemyX, enemyY);
+      }
+      if(health > 0)
+      {
+        hawii = loadImage("hawii.png");
+        imageMode(CENTER);
+        //image(redGoblin, enemyX, enemyY);
+        hawii.resize(size,size);
+        image(hawii, enemyX, enemyY);
+      }
+      imageMode(CORNER);
+        
+  }
+}
+class ClownGoblin extends Goblin
+{
+  public ClownGoblin()
   {
     health = 5;
-    speed = 2;
-    size = 10;
-    this.enemyX = enemyX;
-    this.enemyY = enemyY;
+    speed = 7;
+  }
+  void drawGoblin()
+  {
+    redGoblin = loadImage("red.png");      //1 health
+    blueGoblin = loadImage("blue.png");    //2 health
+    pinkGoblin = loadImage("pink.png");    //3 health
+    yellowGoblin = loadImage("yellow.png");    //4 health
+    greenGoblin = loadImage("green.png");    //5 health
+    imageMode(CENTER);
+    if(health == 1)
+      {
+        redGoblin.resize(size,size);
+        image(redGoblin, enemyX, enemyY);
+      }
+      else if(health == 2)
+      {
+        blueGoblin.resize(size,size);
+        image(blueGoblin, enemyX, enemyY);
+      }
+      else if(health == 3)
+      {
+        pinkGoblin.resize(size,size);
+        image(pinkGoblin, enemyX, enemyY);
+      }
+      else if(health == 4)
+      {
+        yellowGoblin.resize(size,size);
+        image(yellowGoblin, enemyX, enemyY);
+      }
+      else if(health == 5)
+      {
+        greenGoblin.resize(size,size);
+        image(greenGoblin, enemyX, enemyY);
+      }
+      if(health > 0)
+      {
+        clown = loadImage("clown.png");
+        imageMode(CENTER);
+        //image(redGoblin, enemyX, enemyY);
+        clown.resize(size,size);
+        image(clown, enemyX, enemyY);
+      }
+      imageMode(CORNER);
+        
   }
 }
-
-class pinkEnemy
+class DressGoblin extends Goblin
 {
-  int health;
-  float speed;
-  int size;
-  int enemyX;
-  int enemyY; 
-  
-  public pinkEnemy(int enemyX, int enemyY)
+  public DressGoblin()
   {
-    health = 10;
-    speed = 2.25;
-    size = 10;
-    this.enemyX = enemyX;
-    this.enemyY = enemyY;
+    health = 1;
+    speed = 10;
+  }
+  void drawGoblin()
+  {
+    redGoblin = loadImage("red.png");      //1 health
+    imageMode(CENTER);
+    if(health == 1)
+      {
+        redGoblin.resize(size,size);
+        image(redGoblin, enemyX, enemyY);
+      }
+      if(health > 0)
+      {
+        dress = loadImage("dress.png");
+        imageMode(CENTER);
+        //image(redGoblin, enemyX, enemyY);
+        dress.resize(size,size);
+        image(dress, enemyX, enemyY);
+      }
+      imageMode(CORNER);
+        
   }
 }
-
-class blackEnemy
+class FancyGoblin extends Goblin//Child Class
 {
-  int health;
-  float speed;
-  int size;
-  int enemyX;
-  int enemyY;
-  
-  public blackEnemy(int enemyX, int enemyY)
+  public FancyGoblin()
   {
-    health = 20;
-    speed = 1.5;
-    size = 10;
-    this.enemyX = enemyX;
-    this.enemyY = enemyY;
+    health = 1;
+    speed = 1;
+  }
+  void drawGoblin()
+  {
+    redGoblin = loadImage("red.png");      //1 health
+    imageMode(CENTER);
+    if(health == 1)
+      {
+        redGoblin.resize(size,size);
+        image(redGoblin, enemyX, enemyY);
+      }
+      if(health > 0)
+      {
+        fancy = loadImage("fancy.png");
+        imageMode(CENTER);
+        //image(redGoblin, enemyX, enemyY);
+        mud.resize(size,size);
+        image(mud, enemyX, enemyY);
+      }
+      imageMode(CORNER);
+        
   }
 }
-
-class whiteEnemy
+//BOSS CLASS CHILD OF GOBLIN CLASS GIVE SPECIAL STUFF AND SHIZ
+class Boss extends Goblin//Child Class
 {
-  int health;
-  float speed;
-  int size;
-  int enemyX;
-  int enemyY;
-  
-  public whiteEnemy(int enemyX, int enemyY)
+  public Boss()
   {
-    health = 40;
-    speed = 0.75;
-    size = 10;
-    this.enemyX = enemyX;
-    this.enemyY = enemyY;
+    health = 1;
+    speed = 1;
+  }
+  void drawGoblin()
+  {
+    redGoblin = loadImage("red.png");      //1 health
+    imageMode(CENTER);
+    if(health == 1)
+      {
+        redGoblin.resize(size,size);
+        image(redGoblin, enemyX, enemyY);
+      }
+      if(health > 0)
+      {
+        mud = loadImage("Mud.png");
+        imageMode(CENTER);
+        //image(redGoblin, enemyX, enemyY);
+        mud.resize(size,size);
+        image(mud, enemyX, enemyY);
+      }
+      imageMode(CORNER);
+        
   }
 }
