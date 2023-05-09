@@ -3,25 +3,28 @@
 ////Theme Goblins
 /*
 --Checklist--
-1. try to figure out how enemies actually act when damage etc
-2. decide againsit other classes or nott 
-3.for the future get this working on other maps
+1. try to figure out how enemies actually act when damage etc*done*
+2. decide againsit other classes or nott *done*
+3.for the future get this working on other maps**
 4. figure a spawning system out rounds or specfic level scripts 
-5. color and look
+5. color and look*done*
 6.finally polish and comment
-7.get the enemies to react to damage 
+7.get the enemies to react to damage **
 8.when done with this help with other parts of the game get finished
 9. make the enemies into goblin **
-
+10. SPAWN SCRIPT NEEDS TO WORK HAVE TO USE CLASS SWITCH CASE DONT WORK BECAUSE MAN IDK JUST USE TYPE AND MAKE EACH CLASS EQUAL TO A TYPE AND HAVE A SWITCH CASE THAT CAN SPAWN EACH OF THAT CLASS
 player = loadImage("geogersBack.png");
        imageMode(CENTER);
        player.resize(400,400);
        image(player, pokePlayerX, pokePlayerY);
        imageMode(CORNER);
+       
+       health denominations
        1 = red
        
 */
-class MuddGoblin
+//PARENT CLASS FOR ENEMIES
+class Goblin
 {
   //Direction: 1-up  2-down  3-left  4-right
   //currentLevel[j][i] == 1
@@ -30,8 +33,16 @@ class MuddGoblin
   int size;
   int enemyX;
   int enemyY;
+  int type;
   PImage mud;
   PImage redGoblin;
+  PImage greenGoblin;
+  PImage yellowGoblin;
+  PImage pinkGoblin;
+  PImage whiteGoblin;
+  PImage blackGoblin;
+  PImage blueGoblin;
+  //PImage redGoblin;
   boolean isSpawning;
   boolean isHit;
   boolean isDead;
@@ -44,7 +55,7 @@ class MuddGoblin
   int direction;
   int destX = level.spawnX, destY = level.spawnY+1;
   
-  public MuddGoblin()
+  public Goblin()
   {
     //still buggy fix when you can and stress test
     //translate the array coords into a coord on the actual plane
@@ -60,35 +71,113 @@ class MuddGoblin
     //enemyXG = level.spawnX;
     //enemyYG = level.spawnY;
     //(level.spawnY*92)+35
-    health = 1;
+    type = 1;
+    health = 6;
     size = 70; 
     isSpawning = true;
     isDead = false;// variable to see if its dead
     attack = false;//if it got to the base take damage and delete the dude
     firstMove = true;
-    speed = 3;
+    speed = 1;
     direction = 2;
     isHit = false;
     //this.enemyX = enemyX;
     //this.enemyY = enemyY;
+    //pathfinding();
     findDest();
+    //drawMudEnemy();
+    
     
   }
   //draw variable
-  void drawRedEnemy()
+  void drawGoblin()
   {
     //checks to see if spawning 
     if(isDead == false)
     {
+      imageMode(CORNER);
+      
+      //establishes the images and assests used
+      //mud = loadImage("Mud.png");
+      redGoblin = loadImage("red.png");      //1 health
+      blueGoblin = loadImage("blue.png");    //2 health
+      pinkGoblin = loadImage("pink.png");    //3 health
+      yellowGoblin = loadImage("yellow.png");//4 health
+      greenGoblin = loadImage("green.png");  //5 health
+      whiteGoblin = loadImage("white.png");  //6 health
+     // blackGoblin = loadImage("black.png");  //7 health
+     
+      imageMode(CENTER);
+      //Color changer for health
+      if(health == 1)
+      {
+        redGoblin.resize(size,size);
+        image(redGoblin, enemyX, enemyY);
+      }
+      else if(health == 2)
+      {
+        blueGoblin.resize(size,size);
+        image(blueGoblin, enemyX, enemyY);
+      }
+      else if(health == 3)
+      {
+        pinkGoblin.resize(size,size);
+        image(pinkGoblin, enemyX, enemyY);
+      }
+      else if(health == 4)
+      {
+        yellowGoblin.resize(size,size);
+        image(yellowGoblin, enemyX, enemyY);
+      }
+      else if(health == 5)
+      {
+        greenGoblin.resize(size,size);
+        image(greenGoblin, enemyX, enemyY);
+      }
+      else if(health == 6)
+      {
+        whiteGoblin.resize(size,size);
+        image(whiteGoblin, enemyX, enemyY);
+      }
+      imageMode(CORNER); 
+      /*
       mud = loadImage("Mud.png");
       redGoblin = loadImage("red.png");
       imageMode(CENTER);
-      redGoblin.resize(size,size);
-      image(redGoblin, enemyX, enemyY);
+      if(type == 1 && health == 1)
+      {
+        redGoblin.resize(size,size);
+        image(redGoblin, enemyX, enemyY);
+        mud.resize(size,size);
+        image(mud, enemyX, enemyY);
+        imageMode(CORNER);
+      }
+      ifHit();
+      */
+      /*
+      switch(type)
+      {
+        case 1: redGoblin.resize(size,size); image(redGoblin, enemyX, enemyY); mud.resize(size,size); image(mud, enemyX, enemyY);                                            //fill(030,030,250,transAmount); stroke(030,030,250); break;
+        case 2: 
+        case 3: 
+        case 4: 
+        case 5: 
+        case 6: 
+        case 7: 
+        case 8: 
+        case 9: 
+      }
+      ifHit();
+      pop();
+      */
+      
+      /*
       mud.resize(size,size);
       image(mud, enemyX, enemyY);
       imageMode(CORNER);
       ifHit();
+      */
+      //takeDamage(0); use when towers can shoot
       /*
       rectMode(CENTER);
       fill(255,0,0);
@@ -215,6 +304,13 @@ class MuddGoblin
     }
     
   }
+  void takeDamage(double amount)
+  {
+    health -= amount;
+    System.out.println("Goblin hit health: " + health);
+    ifHit();
+    //return true;
+  }
   public boolean reachedDest()
   {
     if( direction == 1 && enemyY <= destY*level.mapSize+level.mapSize/2 )
@@ -230,25 +326,17 @@ class MuddGoblin
   }
   void attackBase()
   {
-     
+     //psudeo cose when the pathfinder finds a 4 it goes onto it and counts down the health then the goblin force kills itself so it can be despawned
   }
-}
-
-class blueEnemy
-{
-  int health;
-  float speed;
-  int size;
-  int enemyX;
-  int enemyY;
+  }
   
-  public blueEnemy(int enemyX, int enemyY)
+//test on inhearitance
+class RagGoblin extends Goblin
+{
+  public RagGoblin()
   {
-    health = 1;
-    speed = 1.50;
-    size = 10;
-    this.enemyX = enemyX;
-    this.enemyY = enemyY;
+    health = 2;
+    speed = 2;
   }
 }
 

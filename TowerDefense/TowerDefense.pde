@@ -5,8 +5,9 @@
                     Made by
      Caleb Harris, Will/James Mccallie, and Joshua Poppy 
 ///////////////////////////////////////////////////////////
-
 */
+
+//Fnd a way to use a multi class spawn system that uses diffrent enemy types to make a wave of varied enemies
 //Variables area
 int mapX, mapY;
 int health = 100;
@@ -15,6 +16,11 @@ float diam;
 //level about to be loaded can be changed if .changeLevel is used 
 int levelPlaying;
 int destX = -1, destY = -1;
+int currentSec;
+
+//waves for things and such  
+String waves[];
+int currentWave;
 
 
 //setup 
@@ -22,8 +28,8 @@ int destX = -1, destY = -1;
 Map level = new Map(1);
 Hud h = new Hud();
 
-ArrayList<MuddGoblin> bads = new ArrayList<MuddGoblin>(); //<>//
-MuddGoblin Test = new MuddGoblin(); //<>// //<>//
+ArrayList<Goblin> bads = new ArrayList<Goblin>(); //<>//
+Goblin Test = new Goblin(); //<>// //<>//
 
 //ArrayList<redEnemy> bads = new ArrayList<redEnemy>();
 
@@ -73,7 +79,7 @@ void draw()
   noLoop();
   } //<>//
   //draws enemy and does pathfinding
-  Test.drawRedEnemy(); //<>//
+  Test.drawGoblin(); //<>//
   rectMode(CORNER); //<>//
   //Test.findDest();
   Test.pathfinding(); //<>//
@@ -96,11 +102,12 @@ void keyPressed()
   //kill enemy
   if(key == 'w')
   {
-    Test.health = 0;
+    Test.takeDamage(1);
+    //Test.health-- ;
   }
   if(key == 'e')
   {
-    bads.add( new MuddGoblin() );
+    bads.add( new Goblin() );
   }
 }
 void mouseDragged()
@@ -130,3 +137,77 @@ boolean pointInSniper(float x, float y, float a, float b, float r)
     return false;
   }
 }
+
+void SpawnScript()
+{
+  waves = new String[20];
+  
+}
+
+/* ritchie way
+void runRoundCounter() //counts to next round, spawns enemies for the round, starts next round
+{
+  if(nextSecond < millis())
+  {
+    if(nextSpawn>0)  //give spawn timer ability to spawn faster
+      nextSecond += 250;
+    else
+      nextSecond += 1000;
+    
+    if(nextRoundTimer>0) //count down
+      nextRoundTimer--;
+    else if(nextRoundTimer==0) //begin wave
+    {
+      wave++;                                    //select next wave (currently will cause out-of-bounds)
+      spawnDelay = m.waves[wave].charAt(0)-'0';  //get delay from front of string (had to subtract '0' to convert)
+      nextSpawn = spawnDelay;                    //set delay of first enemy
+      spawnIndex = 1;                            //set index to second number in string
+      nextRoundTimer = -1;                       //disable round timer so that the else will trigger
+    }
+    else //process wave
+    {
+      if(nextSpawn>0)
+        nextSpawn--;
+      if(nextSpawn==0)
+      {
+        nextSpawn = spawnDelay;
+        bads.add(new Enemy(m.waves[wave].charAt(spawnIndex)-'0'));
+        spawnIndex++;
+        if(spawnIndex>=m.waves[wave].length())
+          nextSpawn=-1;
+      }
+    }
+  }
+  if( nextSpawn == -1 && bads.size() == 0 ) //time for next round
+  {
+    nextRoundTimer = 15;
+    nextSpawn = 0;
+    spawnIndex = 0;
+    spawnDelay = 0;
+  }
+}
+
+EXAMPLE WAVES
+ waves = new String[20];
+        waves[0] = "5111111";
+        waves[1] = "3111111";
+        waves[2] = "11111111111";
+        waves[3] = "3121212";
+        waves[4] = "3222222";
+        waves[5] = "63113113";
+        waves[6] = "4123123123";
+        waves[7] = "12222222222";
+        waves[8] = "5313131114";
+        waves[9] = "54141414";
+        waves[10] = "211111";
+        waves[11] = "111111";
+        waves[12] = "222222";
+        waves[13] = "122222";
+        waves[14] = "233333";
+        waves[15] = "133333";
+        waves[16] = "244444";
+        waves[17] = "255555";
+        waves[18] = "266666";
+        waves[19] = "123456789";
+        break;
+*/
