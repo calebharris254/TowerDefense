@@ -105,10 +105,11 @@ void keyPressed()
 }
 void mouseDragged()
 {
-  if (pointInSniper(mouseX, mouseY, snip.towerX, snip.towerY, snip.size / 2) && snip.placed == false) 
+  if (pointInSniper(mouseX, mouseY, snip.towerX, snip.towerY, snip.size / 2) && snip.placed == false&& money >= 100) 
   {
     snip.towerX =  round(mouseX / snip.size) * snip.size + snip.size/2;
     snip.towerY =  round(mouseY / snip.size) * snip.size + snip.size/2;
+    
    
   }
 }
@@ -118,6 +119,7 @@ void mouseReleased()
  if (pointInSniper(mouseX, mouseY, snip.towerX, snip.towerY, snip.size / 2) && snip.placed == false && snip.onBoard == true) 
   {
     snip.placed = true;
+    money -= 100;
   }
 }
 boolean pointInSniper(float x, float y, float a, float b, float r) 
