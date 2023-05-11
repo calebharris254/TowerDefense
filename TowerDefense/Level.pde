@@ -20,6 +20,10 @@ class Map
   public int spawnX = -1;
   public int spawnY = -1;
   int mapSize;
+  PImage grass;
+  PImage grass2;
+  PImage grass3;
+  PImage path;
   //int destX = -1;
   //int destY = -1;
 
@@ -107,7 +111,12 @@ class Map
   //draws level using level size variable
   public void drawLevel()
   {
+    //assets
+    grass = loadImage("grassTile3.png");    
+    path = loadImage("pathTile.png");
+    //--------------------------------------
     //for loop to scan stuff
+    //imageMode(CENTER);
     for (int i = 0; i < 12; i++)
     {
       
@@ -115,19 +124,19 @@ class Map
       {
         
         stroke(12);
-        if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 1)
+        if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 1)//path
         {
-          fill(255, 255, 0);
-          rect(j*(mapSize), i*(mapSize), (width/17), (mapSize));
-        } else if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 4)
+          path.resize(width/17,(mapSize));
+          image(path,j*(mapSize), i*(mapSize));
+        } else if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 4)// start
         {
           fill(0, 0, 255);
           rect(j*(mapSize), i*(mapSize), (width/17), (mapSize));
-        } else if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 2)
+        } else if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 2)//grass
         {
-          fill(0, 255, 0);
-          rect(j*(mapSize), i*(mapSize), (width/17), (mapSize));
-        } else if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 3)
+          grass.resize(width/17,(mapSize));
+          image(grass,j*(mapSize), i*(mapSize));
+        } else if (level.loadLevel(levelPlaying)[j+mapY][i+mapX] == 3)//base
         {
           fill(255, 0, 0);
           rect(j*(mapSize), i*(mapSize), (width/17), (mapSize));
@@ -136,7 +145,7 @@ class Map
       }
       
     }
-    
+    imageMode(CORNER);
   }
   //changes levels so you can play on multiple diffrent levels
   

@@ -17,7 +17,7 @@ float diam;
 int levelPlaying;
 int destX = -1, destY = -1;
 int currentSec;
-
+boolean bossActive = false;
 //waves for things and such  
 String waves[];
 int currentWave;
@@ -28,8 +28,9 @@ int currentWave;
 Map level = new Map(1);
 Hud h = new Hud();
 
-ArrayList<Goblin> bads = new ArrayList<Goblin>(); //<>// //<>//
-HawiiGoblin Test = new HawiiGoblin(); //<>// //<>// //<>//
+ArrayList<RagGoblin> bads = new ArrayList<RagGoblin>(); //<>// //<>//
+DressGoblin Test = new DressGoblin(); //<>// //<>// //<>//
+Boss bossTest = new Boss(); //<>// //<>//
 
 //ArrayList<redEnemy> bads = new ArrayList<redEnemy>();
 
@@ -78,12 +79,16 @@ void draw()
   text("GAME OVER",width/2.5,height/2);
   noLoop();
   } //<>// //<>//
+  if(bossActive == true)
+  {
+    bossTest.drawGoblin();
+    bossTest.pathfinding();
+  }
   //draws enemy and does pathfinding
   Test.drawGoblin(); //<>// //<>//
   rectMode(CORNER); //<>// //<>//
   //Test.findDest();
-  Test.pathfinding(); //<>// //<>//
- // Test.reachedDest();
+  Test.pathfinding();  //<>//
  if (snip.towerX <= (level.mapSize*12)&& snip.towerY <= (level.mapSize*12))
  {
    snip.onBoard = true;
@@ -103,11 +108,16 @@ void keyPressed()
   if(key == 'w')
   {
     Test.takeDamage(1);
+    bossTest.takeDamage(5);
     //Test.health-- ;
   }
   if(key == 'e')
   {
-    bads.add( new Goblin() );
+    bads.add( new RagGoblin() );
+  }
+  if(key == 'q')
+  {
+    bossActive = true;
   }
 }
 void mouseDragged()
