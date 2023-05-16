@@ -21,7 +21,7 @@ player = loadImage("geogersBack.png");
        
        health denominations
        1 = red
-       
+try to get a delay to the waves so you have to time to prepare before death
 */
 //PARENT CLASS FOR ENEMIES
 class Goblin

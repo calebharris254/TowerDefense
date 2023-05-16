@@ -21,7 +21,7 @@ boolean bossActive = false;
 //waves for things and such  
 String waves[];
 int currentWave;
-
+boolean gameStarted = false;
 
 //setup 
 //change level by putting a 1 or a 2 in the map slot
@@ -55,48 +55,58 @@ void setup()
 
 void draw()
 {
-  level.determineStartAndEnd();
-  //test
-  float newX = level.findCenter(level.spawnX);
-  float newY = level.findCenter(level.spawnY);
-  println("level x "+ newX+" level Y" + newY);
-  //println("enemyX "+"enemyY ");
-  //
-  
-  background(255);
-  //redEnemy();
-  //draws level
-  level.drawLevel();
-  //draws hud
-  h.drawHud();
-  text(health,width / 1.475, 120 );// displays health
-  text(money,width / 1.475, 225 );// displays money
-  fill(255, 0, 0);
-  ellipse(snip.towerX, snip.towerY, snip.size, snip.size);
-  //death mechanic
-  if(health == 0)
+  if(gameStarted)
   {
-  text("GAME OVER",width/2.5,height/2);
-  noLoop();
-  } //<>// //<>//
-  if(bossActive == true)
-  {
-    bossTest.drawGoblin();
-    bossTest.pathfinding();
+    level.determineStartAndEnd();
+    //test
+    float newX = level.findCenter(level.spawnX);
+    float newY = level.findCenter(level.spawnY);
+    println("level x "+ newX+" level Y" + newY);
+    //println("enemyX "+"enemyY ");
+    //
+    
+    background(255);
+    //redEnemy();
+    //draws level
+    level.drawLevel();
+    //draws hud
+    h.drawHud();
+    text(health,width / 1.475, 120 );// displays health
+    text(money,width / 1.475, 225 );// displays money
+    fill(255, 0, 0);
+    ellipse(snip.towerX, snip.towerY, snip.size, snip.size);
+    //death mechanic
+    if(health == 0)
+    {
+    text("GAME OVER",width/2.5,height/2);
+    noLoop();
+    } //<>// //<>//
+    if(bossActive == true)
+    {
+      bossTest.drawGoblin();
+      bossTest.pathfinding();
+    }
+    //draws enemy and does pathfinding
+    Test.drawGoblin(); //<>// //<>//
+    rectMode(CORNER); //<>// //<>//
+    //Test.findDest();
+    Test.pathfinding();  //<>//
+   if (snip.towerX <= (level.mapSize*12)&& snip.towerY <= (level.mapSize*12))
+   {
+     snip.onBoard = true;
+   }
+   else
+   {
+     snip.onBoard = false;
+   }
   }
-  //draws enemy and does pathfinding
-  Test.drawGoblin(); //<>// //<>//
-  rectMode(CORNER); //<>// //<>//
-  //Test.findDest();
-  Test.pathfinding();  //<>//
- if (snip.towerX <= (level.mapSize*12)&& snip.towerY <= (level.mapSize*12))
- {
-   snip.onBoard = true;
- }
- else
- {
-   snip.onBoard = false;
- }
+  else
+  {
+    //draw main menu please something cool some decent box art type shiz also add a delay to start
+    //place holder
+    textSize(100);
+    text("PRESS A\n WAVE 1",width/2-200,height/2);
+  }
 }
 void keyPressed()
 {
@@ -118,6 +128,10 @@ void keyPressed()
   if(key == 'q')
   {
     bossActive = true;
+  }
+  if(key == 'a')
+  {
+     gameStarted = true; 
   }
 }
 void mouseDragged()
