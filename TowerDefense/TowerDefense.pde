@@ -10,7 +10,7 @@
 //Fnd a way to use a multi class spawn system that uses diffrent enemy types to make a wave of varied enemies
 //Variables area
 int mapX, mapY;
-int health = 100;
+int playerHealth = 100;
 int money = 500;
 float diam;
 //level about to be loaded can be changed if .changeLevel is used 
@@ -71,12 +71,12 @@ void draw()
     level.drawLevel();
     //draws hud
     h.drawHud();
-    text(health,width / 1.475, 120 );// displays health
+    text(playerHealth,width / 1.475, 120 );// displays health
     text(money,width / 1.475, 225 );// displays money
     fill(255, 0, 0);
     ellipse(snip.towerX, snip.towerY, snip.size, snip.size);
     //death mechanic
-    if(health == 0)
+    if(playerHealth == 0)
     {
     text("GAME OVER",width/2.5,height/2);
     noLoop();
@@ -87,10 +87,12 @@ void draw()
       bossTest.pathfinding();
     }
     //draws enemy and does pathfinding
+    Test.pathfinding(); 
     Test.drawGoblin(); //<>// //<>//
     rectMode(CORNER); //<>// //<>//
     //Test.findDest();
-    Test.pathfinding();  //<>//
+     //<>//
+    
    if (snip.towerX <= (level.mapSize*12)&& snip.towerY <= (level.mapSize*12))
    {
      snip.onBoard = true;
@@ -102,17 +104,18 @@ void draw()
   }
   else
   {
+    background(0,255,0);
     //draw main menu please something cool some decent box art type shiz also add a delay to start
     //place holder
     textSize(100);
-    text("PRESS A\n WAVE 1",width/2-200,height/2);
+    text("GOBLIN SMASHERS\n         PRESS A\n          WAVE 1",width/2-400,height/2);
   }
 }
 void keyPressed()
 {
   if(key == 'k')
   {
-   health=0;
+   playerHealth=0;
   }
   //kill enemy
   if(key == 'w')

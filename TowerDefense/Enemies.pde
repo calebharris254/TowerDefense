@@ -46,6 +46,7 @@ class Goblin
   int enemyYG;
   int direction;
   int destX = level.spawnX, destY = level.spawnY+1;
+  boolean tookPlayerHealth;
  // -----------------------------------------------------
   //ASSETS SECTION
   //types
@@ -93,10 +94,12 @@ class Goblin
     speed = 1;
     direction = 2;
     isHit = false;
+    tookPlayerHealth = false;
     //this.enemyX = enemyX;
     //this.enemyY = enemyY;
     //pathfinding();
-    findDest();
+    //findDest();
+    
     //drawMudEnemy();
     
     
@@ -105,8 +108,9 @@ class Goblin
   void drawGoblin()
   {
     //checks to see if spawning 
-    if(isDead == false)
+    if(isDead == false && tookPlayerHealth == false)
     {
+      println("is dead "+ isDead+"\n took health"+tookPlayerHealth);
       imageMode(CORNER);
       
       //establishes the images and assests used
@@ -152,6 +156,7 @@ class Goblin
         image(whiteGoblin, enemyX, enemyY);
       }
       imageMode(CORNER); 
+      
       /*
       mud = loadImage("Mud.png");
       redGoblin = loadImage("red.png");
@@ -275,33 +280,44 @@ class Goblin
   
   void findDest()
   {
-     if( destX > 0 && direction != 4 && (level.currentLevel[destX-1][destY]==1)) //Look left
+    if(isDead == false)
     {
-      System.out.println("Left");
-      destX--;
-      direction = 3;
-      return;
-    }
-    if( destX < level.mapSize && direction != 3 && (level.currentLevel[destX+1][destY]==1)) //Look right
-    {
-      System.out.println("right");
-      destX++;
-      direction = 4;
-      return;
-    }
-    if( destY > 0 && direction != 2 && (level.currentLevel[destX][destY-1]==1)) //Look up
-    {
-      System.out.println("UP");
-      destY--;
-      direction = 1;
-      return;
-    }
-    if( destY < level.mapSize && direction != 1 && (level.currentLevel[destX][destY+1]==1) ) //Look down
-    {
-      System.out.println("down");
-      destY++;
-      direction = 2;
-      return;
+       if( destX > 0 && direction != 4 && (level.currentLevel[destX-1][destY]==1)) //Look left
+      {
+        System.out.println("Left");
+        destX--;
+        direction = 3;
+        return;
+      }
+      if( destX < level.mapSize && direction != 3 && (level.currentLevel[destX+1][destY]==1)) //Look right
+      {
+        System.out.println("right");
+        destX++;
+        direction = 4;
+        return;
+      }
+      if( destY > 0 && direction != 2 && (level.currentLevel[destX][destY-1]==1)) //Look up
+      {
+        System.out.println("UP");
+        destY--;
+        direction = 1;
+        return;
+      }
+      if( destY < level.mapSize && direction != 1 && (level.currentLevel[destX][destY+1]==1) ) //Look down
+      {
+        System.out.println("down");
+        destY++;
+        direction = 2;
+        return;
+      }
+      else
+      {
+        isDead = true;
+        //takeDamage(100);
+        playerHealth -= 1;
+        System.out.println("At base take health "+ playerHealth);
+        tookPlayerHealth = true;
+      }
     }
     //LOOK FOR BASE THEN GO ONTO IT AND TAKE DAMAGE
     //thiis works try nested if in the normal one
