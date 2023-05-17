@@ -31,26 +31,17 @@ Hud h = new Hud();
 ArrayList<RagGoblin> bads = new ArrayList<RagGoblin>(); //<>// //<>//
 DressGoblin Test = new DressGoblin(); //<>// //<>// //<>//
 Boss bossTest = new Boss(); //<>// //<>//
-
-//ArrayList<redEnemy> bads = new ArrayList<redEnemy>();
-
-
-//redEnemy Test = new redEnemy(); //<>// //<>// //<>//
-//redEnemy Test = new redEnemy();
+ //<>//
 waterKnight snip = new waterKnight();
 
 void setup()
 {
   fullScreen();
-  //size(1600,1000);
   snip.towerX = (width/1.5);
   snip.towerY = height/3;
   snip.size = 88;
   textSize(100);
   frameRate(60);
- 
-
-  //level.changeLevel(levelPlaying);
 }
 
 void draw()
@@ -62,11 +53,7 @@ void draw()
     float newX = level.findCenter(level.spawnX);
     float newY = level.findCenter(level.spawnY);
     println("level x "+ newX+" level Y" + newY);
-    //println("enemyX "+"enemyY ");
-    //
-    
     background(255);
-    //redEnemy();
     //draws level
     level.drawLevel();
     //draws hud
@@ -80,7 +67,7 @@ void draw()
     {
     text("GAME OVER",width/2.5,height/2);
     noLoop();
-    } //<>// //<>//
+    } //<>//
     if(bossActive == true)
     {
       bossTest.drawGoblin();
@@ -88,8 +75,8 @@ void draw()
     }
     //draws enemy and does pathfinding
     Test.pathfinding(); 
-    Test.drawGoblin(); //<>// //<>//
-    rectMode(CORNER); //<>// //<>//
+    Test.drawGoblin();  //<>//
+    rectMode(CORNER); //<>//
     //Test.findDest();
      //<>//
     

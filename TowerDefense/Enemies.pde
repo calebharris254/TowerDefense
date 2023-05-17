@@ -19,22 +19,18 @@ player = loadImage("geogersBack.png");
        image(player, pokePlayerX, pokePlayerY);
        imageMode(CORNER);
        
-       health denominations
-       1 = red
 try to get a delay to the waves so you have to time to prepare before death
 */
 //PARENT CLASS FOR ENEMIES
 class Goblin
 {
   //Direction: 1-up  2-down  3-left  4-right
-  //currentLevel[j][i] == 1
   int health;
   float speed;
   int size;
   int enemyX;
   int enemyY;
   int type;
-  //PImage redGoblin;
   boolean isSpawning;
   boolean isHit;
   boolean isDead;
@@ -73,7 +69,6 @@ class Goblin
     //still buggy fix when you can and stress test
     //translate the array coords into a coord on the actual plane
     enemyX = (level.spawnX*level.mapSize)+level.mapSize/2; //<>//
-    //(level.spawnX*92)+5
     enemyY = (level.spawnY*level.mapSize) + level.mapSize/2;
     
     //ANNOYING FIX
@@ -81,9 +76,6 @@ class Goblin
     enemyX = enemyY;
     enemyY = temp;
     
-    //enemyXG = level.spawnX;
-    //enemyYG = level.spawnY;
-    //(level.spawnY*92)+35
     type = 1;
     health = 6;
     size = 70; 
@@ -95,11 +87,7 @@ class Goblin
     direction = 2;
     isHit = false;
     tookPlayerHealth = false;
-    //this.enemyX = enemyX;
-    //this.enemyY = enemyY;
-    //pathfinding();
-    //findDest();
-    
+   
     //drawMudEnemy();
     
     
@@ -156,67 +144,10 @@ class Goblin
         image(whiteGoblin, enemyX, enemyY);
       }
       imageMode(CORNER); 
-      
-      /*
-      mud = loadImage("Mud.png");
-      redGoblin = loadImage("red.png");
-      imageMode(CENTER);
-      if(type == 1 && health == 1)
-      {
-        redGoblin.resize(size,size);
-        image(redGoblin, enemyX, enemyY);
-        mud.resize(size,size);
-        image(mud, enemyX, enemyY);
-        imageMode(CORNER);
-      }
-      ifHit();
-      */
-      /*
-      switch(type)
-      {
-        case 1: redGoblin.resize(size,size); image(redGoblin, enemyX, enemyY); mud.resize(size,size); image(mud, enemyX, enemyY);                                            //fill(030,030,250,transAmount); stroke(030,030,250); break;
-        case 2: 
-        case 3: 
-        case 4: 
-        case 5: 
-        case 6: 
-        case 7: 
-        case 8: 
-        case 9: 
-      }
-      ifHit();
-      pop();
-      */
-      
-      /*
-      mud.resize(size,size);
-      image(mud, enemyX, enemyY);
-      imageMode(CORNER);
-      ifHit();
-      */
-      //takeDamage(0); use when towers can shoot
-      /*
-      rectMode(CENTER);
-      fill(255,0,0);
-      rect(enemyX, enemyY, size, size); 
-      print(" enemyX "+ enemyX+" , "+ "enemyY "+enemyY );
-      rectMode(CORNER);
-      */
+     
     }
   }
-  /*
-  //moves enemy to given coords
-  void moveEnemy(int ogX , int ogY , int dX , int dY)
-  {
-   
-     enemyX = (dX*level.mapSize)+level.mapSize/2;
-     enemyX = (dX*level.mapSize)+level.mapSize/2;  //<>//
-     enemyY = (dY*level.mapSize)+level.mapSize/2;
-     drawRedEnemy();
-     originX = dX;
-     originY = dY;
-  }
-  */
+  //<>//
   //pathfinding method uses the 2d array to find its way around
   void pathfinding()
   {
@@ -239,42 +170,8 @@ class Goblin
         case 3: enemyX -= speed; break;
         case 4: enemyX += speed; break;
       }
-    
-      /*
-      //sets origin as the spawnpoint so it knows where its coming from
-      if(firstMove == true)
-      {
-        originY = level.spawnY;
-        originX = level.spawnX;
-        firstMove = false;
-      }
-      
-      //for loop to scan array 
-      
-      
-       for(int i = originY; i < 12 ; i++)
-       {
-         for(int j = originX-1; j < 12 ; j++)
-         {
-           if(level.loadLevel(levelPlaying)[j+mapX][i+mapY] == 1 && originX != -1 && originY != -1 && originX != 12 && originY != 12 ||
-              level.loadLevel(levelPlaying)[j+mapX][i+mapY] == 3 && originX != -1 && originY != -1 && originX != 12 && originY != 12)//checks for base 
-           {
-             //enemyXG = (enemyX/level.mapSize)-level.mapSize*2;
-             //enemyYG = (enemyY/level.mapSize)-level.mapSize*2;
-             destX = j;
-             destY = i;
-             //originX = en;
-             //originY = enemyYG;
-             moveEnemy(originX, originY , j , i);
-             System.out.println(" dest X: "+destX+" dest Y: " + destY);
-             System.out.println("origin X: "+originX+ " origin Y: "+originY);
-             System.out.println("Enemy grid X " + enemyXG + "enemy grid Y" + enemyYG );
-             
-           }
-         }
-         */
-       }
      }
+   }
     
      
   
