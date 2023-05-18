@@ -44,24 +44,6 @@ class Goblin
   int destX = level.spawnX, destY = level.spawnY+1;
   boolean tookPlayerHealth;
  // -----------------------------------------------------
-  //ASSETS SECTION
-  //types
-  PImage mud;
-  PImage rag;
-  PImage farm;
-  PImage clown;
-  PImage fancy;
-  PImage hawii;
-  PImage dress;
-  //Colors
-  PImage redGoblin;
-  PImage greenGoblin;
-  PImage yellowGoblin;
-  PImage pinkGoblin;
-  PImage whiteGoblin;
-  PImage blackGoblin;
-  PImage blueGoblin;
-  PImage boss;
   
   
   public Goblin()
@@ -101,14 +83,7 @@ class Goblin
       println("is dead "+ isDead+"\n took health"+tookPlayerHealth);
       imageMode(CORNER);
       
-      //establishes the images and assests used
-      //mud = loadImage("Mud.png");
-      redGoblin = loadImage("red.png");      //1 health
-      blueGoblin = loadImage("blue.png");    //2 health
-      pinkGoblin = loadImage("pink.png");    //3 health
-      yellowGoblin = loadImage("yellow.png");//4 health
-      greenGoblin = loadImage("green.png");  //5 health
-      whiteGoblin = loadImage("white.png");  //6 health
+     
      // blackGoblin = loadImage("black.png");  //7 health
      
       imageMode(CENTER);
@@ -159,7 +134,6 @@ class Goblin
         enemyX = destX*level.mapSize+level.mapSize/2; //<>//
         enemyY = destY*level.mapSize+level.mapSize/2;
         findDest();
-        attackBase();
         System.out.println("try move");
         System.out.println("Enemy X "+enemyX+"\t Enemy Y "+ enemyY);
       }
@@ -216,30 +190,7 @@ class Goblin
         tookPlayerHealth = true;
       }
     }
-    //LOOK FOR BASE THEN GO ONTO IT AND TAKE DAMAGE
-    //thiis works try nested if in the normal one
-    /*
-    if( destX > 0 && direction != 4 && (level.currentLevel[destX-1][destY]==3)) //Look left
-    {
-      System.out.println("MADE TO BASE TAKE HEALTH");
-      return;
-    }
-    if( destX < level.mapSize && direction != 3 && (level.currentLevel[destX+1][destY]==3)) //Look right
-    {
-      System.out.println("MADE TO BASE TAKE HEALTH");
-      return;
-    }
-    if( destY > 0 && direction != 2 && (level.currentLevel[destX][destY-1]==3)) //Look up
-    {
-      System.out.println("MADE TO BASE TAKE HEALTH");
-      return;
-    }
-    if( destY < level.mapSize && direction != 1 && (level.currentLevel[destX][destY+1]==3) ) //Look down
-    {
-      System.out.println("MADE TO BASE TAKE HEALTH");
-      return;
-    }
-    */
+    
   }
   void ifHit()
   {
@@ -272,11 +223,6 @@ class Goblin
     System.out.println("havent reached dest");
     return false;
   }
-  void attackBase()
-  {
-     //psudeo cose when the pathfinder finds a 4 it goes onto it and counts down the health then the goblin force kills itself so it can be despawned
-     
-  }
   }
   
 //test on inhearitance lol it works super cool
@@ -289,8 +235,6 @@ class RagGoblin extends Goblin
   }
   void drawGoblin()
   {
-    redGoblin = loadImage("red.png");      //1 health
-    blueGoblin = loadImage("blue.png");    //2 health
     imageMode(CENTER);
     if(health == 1)
       {
@@ -304,7 +248,6 @@ class RagGoblin extends Goblin
       }
       if(health > 0)
       {
-        rag = loadImage("rag.png");
         imageMode(CENTER);
         //image(redGoblin, enemyX, enemyY);
         rag.resize(size,size);
@@ -323,7 +266,6 @@ class MudGoblin extends Goblin//Child Class
   }
   void drawGoblin()
   {
-    redGoblin = loadImage("red.png");      //1 health
     imageMode(CENTER);
     if(health == 1)
       {
@@ -332,7 +274,6 @@ class MudGoblin extends Goblin//Child Class
       }
       if(health > 0)
       {
-        mud = loadImage("Mud.png");
         imageMode(CENTER);
         //image(redGoblin, enemyX, enemyY);
         mud.resize(size,size);
@@ -350,11 +291,7 @@ class FarmGoblin extends Goblin
     speed = 3;
   }
   void drawGoblin()
-  {
-    redGoblin = loadImage("red.png");      //1 health
-    blueGoblin = loadImage("blue.png");    //2 health
-    pinkGoblin = loadImage("pink.png");    //3 health
-    
+  { 
     imageMode(CENTER);
     if(health == 1)
       {
@@ -373,7 +310,6 @@ class FarmGoblin extends Goblin
       }
       if(health > 0)
       {
-        farm = loadImage("farm.png");
         imageMode(CENTER);
         //image(redGoblin, enemyX, enemyY);
         farm.resize(size,size);
@@ -392,12 +328,6 @@ class HawiiGoblin extends Goblin
   }
   void drawGoblin()
   {
-    redGoblin = loadImage("red.png");      //1 health
-    blueGoblin = loadImage("blue.png");    //2 health
-    pinkGoblin = loadImage("pink.png");    //2 health
-    yellowGoblin = loadImage("yellow.png");    //2 health
-    greenGoblin = loadImage("green.png");    //2 health
-    whiteGoblin = loadImage("white.png");    //2 health
     imageMode(CENTER);
     if(health == 1)
       {
@@ -431,7 +361,6 @@ class HawiiGoblin extends Goblin
       }
       if(health > 0)
       {
-        hawii = loadImage("hawii.png");
         imageMode(CENTER);
         //image(redGoblin, enemyX, enemyY);
         hawii.resize(size,size);
@@ -450,11 +379,6 @@ class ClownGoblin extends Goblin
   }
   void drawGoblin()
   {
-    redGoblin = loadImage("red.png");      //1 health
-    blueGoblin = loadImage("blue.png");    //2 health
-    pinkGoblin = loadImage("pink.png");    //3 health
-    yellowGoblin = loadImage("yellow.png");    //4 health
-    greenGoblin = loadImage("green.png");    //5 health
     imageMode(CENTER);
     if(health == 1)
       {
@@ -483,7 +407,6 @@ class ClownGoblin extends Goblin
       }
       if(health > 0)
       {
-        clown = loadImage("clown.png");
         imageMode(CENTER);
         //image(redGoblin, enemyX, enemyY);
         clown.resize(size,size);
@@ -502,7 +425,6 @@ class DressGoblin extends Goblin
   }
   void drawGoblin()
   {
-    redGoblin = loadImage("red.png");      //1 health
     imageMode(CENTER);
     if(health == 1)
       {
@@ -511,9 +433,7 @@ class DressGoblin extends Goblin
       }
       if(health > 0)
       {
-        dress = loadImage("dress.png");
         imageMode(CENTER);
-        //image(redGoblin, enemyX, enemyY);
         dress.resize(size,size);
         image(dress, enemyX, enemyY);
       }
@@ -530,12 +450,6 @@ class FancyGoblin extends Goblin//Child Class
   }
   void drawGoblin()
   {
-    redGoblin = loadImage("red.png");      //1 health
-    blueGoblin = loadImage("blue.png");    //2 health
-    pinkGoblin = loadImage("pink.png");    //2 health
-    yellowGoblin = loadImage("yellow.png");    //2 health
-    greenGoblin = loadImage("green.png");    //2 health
-    whiteGoblin = loadImage("white.png");    //2 health
     imageMode(CENTER);
     if(health == 1)
       {
@@ -569,7 +483,6 @@ class FancyGoblin extends Goblin//Child Class
       }
       if(health > 0)
       {
-        fancy = loadImage("fancy.png");
         imageMode(CENTER);
         //image(redGoblin, enemyX, enemyY);
         fancy.resize(size,size);
@@ -589,17 +502,15 @@ class Boss extends Goblin//Child Class
   }
   void drawGoblin()
   {
-    boss = loadImage("boss.png"); 
     imageMode(CENTER);
       if(health > 0)
       {
         drawHealthBar();
-        boss = loadImage("boss.png");
         imageMode(CENTER);
         //image(redGoblin, enemyX, enemyY);
         boss.resize(size,size);
         image(boss, enemyX, enemyY);
-      }
+      }  
       imageMode(CORNER);
       noStroke();
         

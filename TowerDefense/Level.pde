@@ -15,7 +15,6 @@
 
 class Map
 {
-  //int levelPlaying = 1;
   int [][]currentLevel;// = returnedLevel[12][12];
   public int spawnX = -1;
   public int spawnY = -1;
@@ -37,8 +36,7 @@ class Map
 
   public int[][] loadLevel(int levelType)
   {
-    mapSize = 88;
-    //((height+width)/2)/17
+    mapSize = 88;// size of each square on the map
     if (levelType == 1)
     {
       int [][]returnedLevel = {

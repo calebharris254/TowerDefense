@@ -5,6 +5,8 @@
                     Made by
      Caleb Harris, Will/James Mccallie, and Joshua Poppy 
 ///////////////////////////////////////////////////////////
+Game is a proof of concept its very lame and doesn't have towers implemented yet and waves for the enemies still dont work
+you can spawn a boss and a few other things are not working correctly but it has a lose scenrio and yeah 
 */
 
 //Fnd a way to use a multi class spawn system that uses diffrent enemy types to make a wave of varied enemies
@@ -22,6 +24,25 @@ boolean bossActive = false;
 String waves[];
 int currentWave;
 boolean gameStarted = false;
+//ASSETS SECTION
+ //types
+  PImage mud;
+  PImage rag;
+  PImage farm;
+  PImage clown;
+  PImage fancy;
+  PImage hawii;
+  PImage dress;
+  //Colors
+  PImage redGoblin;
+  PImage greenGoblin;
+  PImage yellowGoblin;
+  PImage pinkGoblin;
+  PImage whiteGoblin;
+  PImage blackGoblin;
+  PImage blueGoblin;
+  PImage boss;
+  
 
 //setup 
 //change level by putting a 1 or a 2 in the map slot
@@ -42,6 +63,22 @@ void setup()
   snip.size = 88;
   textSize(100);
   frameRate(60);
+   //establishes the images and assests used
+  //mud = loadImage("Mud.png");
+  redGoblin = loadImage("red.png");      //1 health
+  blueGoblin = loadImage("blue.png");    //2 health
+  pinkGoblin = loadImage("pink.png");    //3 health
+  yellowGoblin = loadImage("yellow.png");//4 health
+  greenGoblin = loadImage("green.png");  //5 health
+  whiteGoblin = loadImage("white.png");  //6 health
+  rag = loadImage("rag.png");
+  mud = loadImage("Mud.png");
+  farm = loadImage("farm.png");
+  hawii = loadImage("hawii.png");
+  clown = loadImage("clown.png");
+  dress = loadImage("dress.png");
+  fancy = loadImage("fancy.png");
+  boss = loadImage("boss.png");
 }
 
 void draw()
@@ -100,26 +137,30 @@ void draw()
 }
 void keyPressed()
 {
+  //kills player 
   if(key == 'k')
   {
    playerHealth=0;
   }
-  //kill enemy
-  if(key == 'w')
+  //Takes damage from all spawned enemies including boss
+  if(key == 'w' || key == 'W')
   {
     Test.takeDamage(1);
     bossTest.takeDamage(5);
     //Test.health-- ;
   }
-  if(key == 'e')
+  //spawns enemy  *doesn't work*
+  if(key == 'e' || key == 'E')
   {
     bads.add( new RagGoblin() );
   }
-  if(key == 'q')
+  //spawns boss because theres no way to have the boss spawn naturally 
+  if(key == 'q' || key == 'Q' && bossActive == false)
   {
     bossActive = true;
   }
-  if(key == 'a')
+  //starts game
+  if(key == 'a' || key == 'A')
   {
      gameStarted = true; 
   }
@@ -159,71 +200,3 @@ void SpawnScript()
   waves = new String[20];
   
 }
-
-/* ritchie way
-void runRoundCounter() //counts to next round, spawns enemies for the round, starts next round
-{
-  if(nextSecond < millis())
-  {
-    if(nextSpawn>0)  //give spawn timer ability to spawn faster
-      nextSecond += 250;
-    else
-      nextSecond += 1000;
-    
-    if(nextRoundTimer>0) //count down
-      nextRoundTimer--;
-    else if(nextRoundTimer==0) //begin wave
-    {
-      wave++;                                    //select next wave (currently will cause out-of-bounds)
-      spawnDelay = m.waves[wave].charAt(0)-'0';  //get delay from front of string (had to subtract '0' to convert)
-      nextSpawn = spawnDelay;                    //set delay of first enemy
-      spawnIndex = 1;                            //set index to second number in string
-      nextRoundTimer = -1;                       //disable round timer so that the else will trigger
-    }
-    else //process wave
-    {
-      if(nextSpawn>0)
-        nextSpawn--;
-      if(nextSpawn==0)
-      {
-        nextSpawn = spawnDelay;
-        bads.add(new Enemy(m.waves[wave].charAt(spawnIndex)-'0'));
-        spawnIndex++;
-        if(spawnIndex>=m.waves[wave].length())
-          nextSpawn=-1;
-      }
-    }
-  }
-  if( nextSpawn == -1 && bads.size() == 0 ) //time for next round
-  {
-    nextRoundTimer = 15;
-    nextSpawn = 0;
-    spawnIndex = 0;
-    spawnDelay = 0;
-  }
-}
-
-EXAMPLE WAVES
- waves = new String[20];
-        waves[0] = "5111111";
-        waves[1] = "3111111";
-        waves[2] = "11111111111";
-        waves[3] = "3121212";
-        waves[4] = "3222222";
-        waves[5] = "63113113";
-        waves[6] = "4123123123";
-        waves[7] = "12222222222";
-        waves[8] = "5313131114";
-        waves[9] = "54141414";
-        waves[10] = "211111";
-        waves[11] = "111111";
-        waves[12] = "222222";
-        waves[13] = "122222";
-        waves[14] = "233333";
-        waves[15] = "133333";
-        waves[16] = "244444";
-        waves[17] = "255555";
-        waves[18] = "266666";
-        waves[19] = "123456789";
-        break;
-*/
