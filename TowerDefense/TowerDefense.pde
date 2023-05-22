@@ -58,6 +58,12 @@ Hud h = new Hud();
 
 ArrayList<RagGoblin> bads = new ArrayList<RagGoblin>(); //<>// //<>//
 DressGoblin Test = new DressGoblin(); //<>// //<>// //<>//
+RagGoblin Test2 = new RagGoblin(); //<>// //<>//
+FancyGoblin Test3 = new FancyGoblin(); //<>// //<>//
+HawiiGoblin Test4 = new HawiiGoblin(); //<>// //<>//
+ClownGoblin Test5 = new ClownGoblin(); //<>// //<>//
+FarmGoblin Test6 = new FarmGoblin(); //<>// //<>//
+MudGoblin Test7 = new MudGoblin(); //<>// //<>//
 Boss bossTest = new Boss(); //<>// //<>//
  //<>//
 waterKnight snip = new waterKnight();
@@ -129,6 +135,36 @@ void draw()
       Test.pathfinding(); 
       Test.drawGoblin(); 
     }
+    if(Test2.isDead == false)
+    {
+      Test2.pathfinding(); 
+      Test2.drawGoblin(); 
+    }
+    if(Test3.isDead == false)
+    {
+      Test3.pathfinding(); 
+      Test3.drawGoblin(); 
+    }
+    if(Test4.isDead == false)
+    {
+      Test4.pathfinding(); 
+      Test4.drawGoblin(); 
+    }
+    if(Test5.isDead == false)
+    {
+      Test5.pathfinding(); 
+      Test5.drawGoblin(); 
+    }
+    if(Test6.isDead == false)
+    {
+      Test6.pathfinding(); 
+      Test6.drawGoblin(); 
+    }
+    if(Test7.isDead == false)
+    {
+      Test7.pathfinding(); 
+      Test7.drawGoblin(); 
+    }
     rectMode(CORNER); //<>//
     //Test.findDest();
      //<>//
@@ -148,7 +184,7 @@ void draw()
     //draw main menu please something cool some decent box art type shiz also add a delay to start
     //place holder
     textSize(100);
-    text("GOBLIN SMASHERS\n         PRESS A\n          WAVE 1",width/2-400,height/2);
+    text("GOBLIN SMASHERS\n         PRESS A\n          WAVE 1\n       press W to wam bam",width/2-400,height/2);
   }
 }
 
@@ -166,6 +202,13 @@ void keyPressed()
   if(key == 'w' || key == 'W')
   {
     Test.takeDamage(1);
+    Test2.takeDamage(1);
+    Test3.takeDamage(1);
+    Test4.takeDamage(1);
+    Test5.takeDamage(1);
+    Test6.takeDamage(1);
+    Test6.takeDamage(1);
+    Test7.takeDamage(1);
     bossTest.takeDamage(5);
     //Test.health-- ;
   }
