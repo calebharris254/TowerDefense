@@ -9,6 +9,7 @@ by Joshua
 float hudSizeX = 0;
 PImage moneyIcon;
 PImage healthIcon;
+//declares class
 class Hud
 {
   
@@ -26,10 +27,7 @@ class Hud
     rect((width - hudSizeX) + hudSizeX / 1.8, (height / 4 ) + hudSizeX / 2.7 , hudSizeX / 3.25, hudSizeX / 3.25);
     rect((width - hudSizeX) + 40, (height / 2.2)+ hudSizeX / 2.7 + 50, hudSizeX / 3.25, hudSizeX / 3.25);
     rect((width - hudSizeX) + hudSizeX / 1.8, (height / 2.2)+ hudSizeX / 2.7 + 50, hudSizeX / 3.25, hudSizeX / 3.25);
-    
-    healthIcon = loadImage("redHeart.png");
-    moneyIcon = loadImage("currency.png");
-    
+   
     healthIcon.resize(90,90);
     moneyIcon.resize(90,90);
     

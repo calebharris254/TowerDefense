@@ -1,12 +1,13 @@
 /*
 ////////////////////////////////////////////////////////////
-          -Goblin Smashers The Tower Defense Game-
+       -Goblin Smashers The Tower Defense Game-
 
                     Made by
      Caleb Harris, Will/James Mccallie, and Joshua Poppy 
 ///////////////////////////////////////////////////////////
 Game is a proof of concept its very lame and doesn't have towers implemented yet and waves for the enemies still dont work
 you can spawn a boss and a few other things are not working correctly but it has a lose scenrio and yeah 
+FINAL DRAFT AS OF 5/22/23
 */
 
 //Fnd a way to use a multi class spawn system that uses diffrent enemy types to make a wave of varied enemies
@@ -24,6 +25,12 @@ boolean bossActive = false;
 String waves[];
 int currentWave;
 boolean gameStarted = false;
+int nextSecond = 1000;
+int nextSpawn = 0; 
+int nextRoundTimer = 5;
+int wave = -1; //current wave
+int spawnDelay = 0;  //time between spawns
+int spawnIndex = 0;  //which enemy to spawn next
 //ASSETS SECTION
  //types
   PImage mud;
@@ -63,7 +70,8 @@ void setup()
   snip.size = 88;
   textSize(100);
   frameRate(60);
-   //establishes the images and assests used
+  //establishes the images and assests used
+  //------------------------------------------------------------------
   //mud = loadImage("Mud.png");
   redGoblin = loadImage("red.png");      //1 health
   blueGoblin = loadImage("blue.png");    //2 health
@@ -79,6 +87,9 @@ void setup()
   dress = loadImage("dress.png");
   fancy = loadImage("fancy.png");
   boss = loadImage("boss.png");
+  healthIcon = loadImage("redHeart.png");
+  moneyIcon = loadImage("currency.png");
+  //-----------------------------------------------------------------------
 }
 
 void draw()
@@ -105,13 +116,14 @@ void draw()
     text("GAME OVER",width/2.5,height/2);
     noLoop();
     } //<>//
+    //checks to see if dude is dead
     if(bossActive == true && bossTest.isDead == false)
     {
       bossTest.drawGoblin();
       bossTest.pathfinding();
     }
     //draws enemy and does pathfinding
-     //<>//
+    //checks to see if dude is dead //<>//
     if(Test.isDead == false)
     {
       Test.pathfinding(); 
@@ -139,6 +151,10 @@ void draw()
     text("GOBLIN SMASHERS\n         PRESS A\n          WAVE 1",width/2-400,height/2);
   }
 }
+
+//-------------------------------------------------------------------------------------------------------------------------------------
+//METHODS AND KEYPRESSED
+
 void keyPressed()
 {
   //kills player 
@@ -188,6 +204,8 @@ void mouseReleased()
     money -= 100;
   }
 }
+//---------------------------------------------------------------------------------------------------------------------------
+//checks if cursor is in the icon
 boolean pointInSniper(float x, float y, float a, float b, float r) 
 {
   if (dist(x, y, a, b) <= r+25) 
@@ -198,9 +216,55 @@ boolean pointInSniper(float x, float y, float a, float b, float r)
     return false;
   }
 }
+//script for spawning the bad guys mostly borrowed from ritchie********
+/*
+**COULDNT FINSIH WAVES IN TIME**
 
 void SpawnScript()
 {
-  waves = new String[20];
+  //waves = new String[20];
+  if(nextSecond < millis())
+  {
+    nextSecond += 250;
+  }
+  else
+  {
+    nextSecond += 1000; 
+  }
   
-}
+  if(nextRoundTimer > 0)
+  {
+    nextRoundTimer--;
+  }
+  else if(nextRoundTimer == 0)
+  {
+    wave++;                                    //select next wave (currently will cause out-of-bounds)
+    spawnDelay = level.waves[wave].charAt(0)-'0';  //get delay from front of string (had to subtract '0' to convert)
+    nextSpawn = spawnDelay;                    //set delay of first enemy
+    spawnIndex = 1;                            //set index to second number in string
+    nextRoundTimer = -1;             
+  }
+  else //process wave
+    {
+      if(nextSpawn>0)
+      {
+        nextSpawn--;
+      }
+      if(nextSpawn==0)
+      {
+        nextSpawn = spawnDelay;
+        //bads.add(new Enemy(m.waves[wave].charAt(spawnIndex)-'0'));
+        spawnIndex++;
+        if(spawnIndex>=level.waves[wave].length())
+          nextSpawn=-1;
+      }
+    }
+    if( nextSpawn == -1 && bads.size() == 0 ) //time for next round
+    {
+      nextRoundTimer = 15;
+      nextSpawn = 0;
+      spawnIndex = 0;
+      spawnDelay = 0;
+    }
+  }
+   */

@@ -29,6 +29,7 @@ class Goblin
   float speed;
   int size;
   int enemyX;
+  int spawnType;
   int enemyY;
   int type;
   boolean isSpawning;
@@ -36,6 +37,7 @@ class Goblin
   boolean isDead;
   boolean attack;
   boolean firstMove;
+  int moneyGiven;
   int originX;
   int originY;
   int enemyXG;
@@ -43,11 +45,14 @@ class Goblin
   int direction;
   int destX = level.spawnX, destY = level.spawnY+1;
   boolean tookPlayerHealth;
+  int damage;
+  //char = '';
  // -----------------------------------------------------
   
   
   public Goblin()
   {
+    //default values stay unchanged unless child class changes it
     //still buggy fix when you can and stress test
     //translate the array coords into a coord on the actual plane
     enemyX = (level.spawnX*level.mapSize)+level.mapSize/2; //<>//
@@ -59,8 +64,10 @@ class Goblin
     enemyY = temp;
     
     type = 1;
+    damage = 1;
     health = 6;
     size = 70; 
+    moneyGiven = 0;
     isSpawning = true;
     isDead = false;// variable to see if its dead
     attack = false;//if it got to the base take damage and delete the dude
@@ -148,7 +155,7 @@ class Goblin
    }
     
      
-  
+  //finds where to pathfind to
   void findDest()
   {
     if(isDead == false)
@@ -185,13 +192,14 @@ class Goblin
       {
         isDead = true;
         //takeDamage(100);
-        playerHealth -= 1;
+        playerHealth -= damage;
         System.out.println("At base take health "+ playerHealth);
         tookPlayerHealth = true;
       }
     }
     
   }
+  //makes method to check is hit
   void ifHit()
   {
     if(health == 0)
@@ -199,6 +207,7 @@ class Goblin
       isDead = true;
       //isSpawning = false;
       System.out.println("That dude dead");
+      money += moneyGiven;
       //noLoop();
     }
     
@@ -232,6 +241,9 @@ class RagGoblin extends Goblin
   {
     health = 2;
     speed = 2;
+    damage = 2;
+    moneyGiven = 5;
+    type = 1;
   }
   void drawGoblin()
   {
@@ -263,6 +275,9 @@ class MudGoblin extends Goblin//Child Class
   {
     health = 1;
     speed = 1;
+    damage = 1;
+    moneyGiven = 1;
+    type = 2;
   }
   void drawGoblin()
   {
@@ -289,6 +304,8 @@ class FarmGoblin extends Goblin
   {
     health = 3;
     speed = 3;
+    damage = 4;
+    moneyGiven = 10;
   }
   void drawGoblin()
   { 
@@ -325,6 +342,9 @@ class HawiiGoblin extends Goblin
   {
     health = 6;
     speed = 1;
+    damage = 5;
+    moneyGiven = 15;
+    type = 3;
   }
   void drawGoblin()
   {
@@ -376,6 +396,9 @@ class ClownGoblin extends Goblin
   {
     health = 5;
     speed = 7;
+    damage = 3;
+    moneyGiven = 20;
+    type = 4;
   }
   void drawGoblin()
   {
@@ -422,6 +445,8 @@ class DressGoblin extends Goblin
   {
     health = 1;
     speed = 10;
+    moneyGiven = 10;
+    type = 5;
   }
   void drawGoblin()
   {
@@ -447,6 +472,9 @@ class FancyGoblin extends Goblin//Child Class
   {
     health = 6;
     speed = 8;
+    damage = 8;
+    moneyGiven = 25;
+    type = 6;
   }
   void drawGoblin()
   {
@@ -499,6 +527,9 @@ class Boss extends Goblin//Child Class
   {
     health = 20;
     speed = 1;
+    damage = 50;
+    moneyGiven = 100;
+    type = 7;
   }
   void drawGoblin()
   {
@@ -532,5 +563,6 @@ class Boss extends Goblin//Child Class
    strokeWeight(3);
    rect(width/2-80,20,200,20);
    noStroke();
+   //stroke();
   }
 }

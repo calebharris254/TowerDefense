@@ -19,6 +19,7 @@ class Map
   public int spawnX = -1;
   public int spawnY = -1;
   int mapSize;
+  String [] waves; 
   PImage grass;
   PImage grass2;
   PImage grass3;
@@ -53,8 +54,33 @@ class Map
         {2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2},
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2},
         {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 2},
-
+        
       };
+      //WAVES FOR MAP IN PROGRESS
+      /*
+        waves = new String[20];
+        waves[0] = "5111111";
+        waves[1] = "3111111";
+        waves[2] = "11111111111";
+        waves[3] = "3121212";
+        waves[4] = "3222222";
+        waves[5] = "63113113";
+        waves[6] = "4123123123";
+        waves[7] = "12222222222";
+        waves[8] = "5313131114";
+        waves[9] = "54141414";
+        waves[10] = "211111";
+        waves[11] = "111111";
+        waves[12] = "222222";
+        waves[13] = "122222";
+        waves[14] = "233333";
+        waves[15] = "133333";
+        waves[16] = "244444";
+        waves[17] = "255555";
+        waves[18] = "266666";
+        waves[19] = "123456789";
+        waves[20] = "12445569757434";
+        */
       return returnedLevel;
       } 
     else if (levelType == 2)

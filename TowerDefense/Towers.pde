@@ -1,4 +1,6 @@
 //Theme Goblins
+//mostly proof of concept
+//clases of towers needs to be inherited like enemies
 class waterKnight
 {
   
