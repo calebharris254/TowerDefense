@@ -105,14 +105,18 @@ void draw()
     text("GAME OVER",width/2.5,height/2);
     noLoop();
     } //<>//
-    if(bossActive == true)
+    if(bossActive == true && bossTest.isDead == false)
     {
       bossTest.drawGoblin();
       bossTest.pathfinding();
     }
     //draws enemy and does pathfinding
-    Test.pathfinding(); 
-    Test.drawGoblin();  //<>//
+     //<>//
+    if(Test.isDead == false)
+    {
+      Test.pathfinding(); 
+      Test.drawGoblin(); 
+    }
     rectMode(CORNER); //<>//
     //Test.findDest();
      //<>//
